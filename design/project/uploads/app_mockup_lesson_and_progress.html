@@ -1,0 +1,207 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+.row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;padding:16px 0;}
+.phone{width:280px;background:#fff;border-radius:32px;border:1px solid #D3D1C7;overflow:hidden;flex-shrink:0;}
+.phone-bar{height:8px;background:#1D9E75;}
+.screen{background:#F8F9FA;}
+.topbar{background:#fff;padding:14px 16px 10px;border-bottom:0.5px solid #EAEAEA;}
+.back-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.back-btn{font-size:18px;color:#1D9E75;}
+.screen-title{font-size:15px;font-weight:500;color:#2C2C2A;font-family:var(--font-sans);}
+.screen-sub{font-size:11px;color:#888780;font-family:var(--font-sans);}
+.progress-row{display:flex;align-items:center;gap:8px;margin-top:8px;}
+.prog-track{flex:1;height:5px;background:#E1F5EE;border-radius:3px;}
+.prog-fill{height:5px;border-radius:3px;background:#1D9E75;}
+.prog-label{font-size:11px;color:#1D9E75;font-family:var(--font-sans);white-space:nowrap;}
+.video-block{background:#1D9E75;height:140px;display:flex;align-items:center;justify-content:center;}
+.play-btn{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.2);border:1.5px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center;}
+.video-label{position:absolute;bottom:8px;left:12px;font-size:10px;color:rgba(255,255,255,0.8);font-family:var(--font-sans);}
+.video-wrap{position:relative;}
+.content{padding:14px 16px;}
+.lesson-title{font-size:14px;font-weight:500;color:#2C2C2A;margin-bottom:6px;font-family:var(--font-sans);}
+.lesson-body{font-size:12px;color:#5F5E5A;line-height:1.6;margin-bottom:14px;font-family:var(--font-sans);}
+.task-block{background:#E1F5EE;border-radius:10px;padding:12px 14px;margin-bottom:14px;border:.5px solid #9FE1CB;}
+.task-label{font-size:10px;font-weight:500;color:#0F6E56;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;font-family:var(--font-sans);}
+.task-text{font-size:12px;color:#085041;line-height:1.5;font-family:var(--font-sans);}
+.done-btn{background:#1D9E75;border-radius:12px;padding:12px;text-align:center;cursor:pointer;}
+.done-btn-text{font-size:13px;font-weight:500;color:#fff;font-family:var(--font-sans);}
+.xp-badge{display:inline-flex;align-items:center;gap:4px;background:#FAEEDA;border-radius:20px;padding:3px 8px;margin-left:8px;}
+.xp-text{font-size:10px;font-weight:500;color:#633806;font-family:var(--font-sans);}
+.bottom-nav{background:#fff;border-top:0.5px solid #EAEAEA;display:flex;justify-content:space-around;padding:8px 0 14px;}
+.nav-item{display:flex;flex-direction:column;align-items:center;gap:2px;}
+.nav-icon{font-size:18px;color:#B4B2A9;}
+.nav-icon.active{color:#1D9E75;}
+.nav-label{font-size:9px;color:#B4B2A9;font-family:var(--font-sans);}
+.nav-label.active{color:#1D9E75;font-weight:500;}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 16px 0;}
+.stat-card{background:#fff;border-radius:12px;border:.5px solid #EAEAEA;padding:12px;}
+.stat-num{font-size:22px;font-weight:500;color:#2C2C2A;font-family:var(--font-sans);margin-bottom:2px;}
+.stat-num.teal{color:#1D9E75;}
+.stat-label{font-size:10px;color:#888780;font-family:var(--font-sans);}
+.cal-wrap{padding:12px 16px;}
+.cal-label{font-size:11px;font-weight:500;color:#888780;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;font-family:var(--font-sans);}
+.cal-row{display:flex;gap:4px;justify-content:space-between;}
+.cal-day{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;}
+.cal-name{font-size:9px;color:#B4B2A9;font-family:var(--font-sans);}
+.cal-dot{width:24px;height:24px;border-radius:50%;background:#E1F5EE;display:flex;align-items:center;justify-content:center;}
+.cal-dot.done{background:#1D9E75;}
+.cal-dot.today{background:#E1F5EE;border:1.5px solid #1D9E75;}
+.prog-section{padding:12px 16px 0;}
+.prog-section-label{font-size:11px;font-weight:500;color:#888780;text-transform:uppercase;letter-spacing:.04em;margin-bottom:10px;font-family:var(--font-sans);}
+.prog-item{margin-bottom:10px;}
+.prog-item-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;}
+.prog-item-name{font-size:12px;color:#2C2C2A;font-family:var(--font-sans);}
+.prog-item-pct{font-size:11px;color:#1D9E75;font-family:var(--font-sans);font-weight:500;}
+.prog-bar-track{height:5px;background:#E1F5EE;border-radius:3px;}
+.prog-bar-fill{height:5px;border-radius:3px;background:#1D9E75;}
+.achiev-wrap{padding:12px 16px;}
+.achiev-row{display:flex;gap:8px;flex-wrap:wrap;}
+.achiev{background:#fff;border:.5px solid #EAEAEA;border-radius:10px;padding:8px 10px;display:flex;align-items:center;gap:6px;}
+.achiev.earned{border-color:#9FE1CB;background:#E1F5EE;}
+.achiev-icon{font-size:16px;color:#B4B2A9;}
+.achiev-icon.earned{color:#1D9E75;}
+.achiev-text{font-size:10px;color:#888780;font-family:var(--font-sans);}
+.achiev-text.earned{color:#085041;}
+</style>
+
+<h2 class="sr-only">Мокапы экрана урока и экрана прогресса</h2>
+
+<div class="row">
+
+  <div class="phone">
+    <div class="phone-bar"></div>
+    <div class="screen">
+      <div class="topbar">
+        <div class="back-row">
+          <i class="ti ti-arrow-left back-btn" aria-hidden="true"></i>
+          <div>
+            <div class="screen-title">Атака с разбега</div>
+            <div class="screen-sub">Уровень 1 · Игровые навыки</div>
+          </div>
+          <div class="xp-badge"><i class="ti ti-star" aria-hidden="true" style="font-size:10px;color:#854F0B;"></i><span class="xp-text">+30 XP</span></div>
+        </div>
+        <div class="progress-row">
+          <div class="prog-track"><div class="prog-fill" style="width:37%;"></div></div>
+          <span class="prog-label">3 / 8</span>
+        </div>
+      </div>
+
+      <div class="video-wrap">
+        <div class="video-block">
+          <div class="play-btn"><i class="ti ti-player-play" aria-hidden="true" style="font-size:18px;color:#fff;margin-left:2px;"></i></div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="lesson-title">Разбег: четыре шага</div>
+        <div class="lesson-body">Правильный разбег — основа мощной атаки. Начни с двух медленных шагов, затем резко ускорься на третьем и оттолкнись двумя ногами на четвёртом.</div>
+
+        <div class="task-block">
+          <div class="task-label">Задание</div>
+          <div class="task-text">Выполни разбег без мяча 5 раз подряд, концентрируясь на толчке двумя ногами. Почувствуй момент прыжка.</div>
+        </div>
+
+        <div class="done-btn">
+          <div class="done-btn-text">Задание выполнено</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-nav">
+      <div class="nav-item"><i class="ti ti-home nav-icon active" aria-hidden="true"></i><span class="nav-label active">Путь</span></div>
+      <div class="nav-item"><i class="ti ti-chart-bar nav-icon" aria-hidden="true"></i><span class="nav-label">Прогресс</span></div>
+      <div class="nav-item"><i class="ti ti-trophy nav-icon" aria-hidden="true"></i><span class="nav-label">Достижения</span></div>
+      <div class="nav-item"><i class="ti ti-user nav-icon" aria-hidden="true"></i><span class="nav-label">Профиль</span></div>
+    </div>
+  </div>
+
+  <div class="phone">
+    <div class="phone-bar"></div>
+    <div class="screen">
+      <div class="topbar">
+        <div class="screen-title">Мой прогресс</div>
+        <div class="screen-sub" style="margin-top:2px;">Апрель 2026</div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-num teal">7</div>
+          <div class="stat-label">дней подряд</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num teal">620</div>
+          <div class="stat-label">XP заработано</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">18</div>
+          <div class="stat-label">уроков пройдено</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">4</div>
+          <div class="stat-label">текущий уровень</div>
+        </div>
+      </div>
+
+      <div class="cal-wrap">
+        <div class="cal-label">Активность на неделе</div>
+        <div class="cal-row">
+          <div class="cal-day"><span class="cal-name">Пн</span><div class="cal-dot done"><i class="ti ti-check" aria-hidden="true" style="font-size:10px;color:#fff;"></i></div></div>
+          <div class="cal-day"><span class="cal-name">Вт</span><div class="cal-dot done"><i class="ti ti-check" aria-hidden="true" style="font-size:10px;color:#fff;"></i></div></div>
+          <div class="cal-day"><span class="cal-name">Ср</span><div class="cal-dot done"><i class="ti ti-check" aria-hidden="true" style="font-size:10px;color:#fff;"></i></div></div>
+          <div class="cal-day"><span class="cal-name">Чт</span><div class="cal-dot done"><i class="ti ti-check" aria-hidden="true" style="font-size:10px;color:#fff;"></i></div></div>
+          <div class="cal-day"><span class="cal-name">Пт</span><div class="cal-dot done"><i class="ti ti-check" aria-hidden="true" style="font-size:10px;color:#fff;"></i></div></div>
+          <div class="cal-day"><span class="cal-name">Сб</span><div class="cal-dot done"><i class="ti ti-check" aria-hidden="true" style="font-size:10px;color:#fff;"></i></div></div>
+          <div class="cal-day"><span class="cal-name">Вс</span><div class="cal-dot today"></div></div>
+        </div>
+      </div>
+
+      <div class="prog-section">
+        <div class="prog-section-label">По модулям</div>
+        <div class="prog-item">
+          <div class="prog-item-row"><span class="prog-item-name">Основы игры</span><span class="prog-item-pct">100%</span></div>
+          <div class="prog-bar-track"><div class="prog-bar-fill" style="width:100%;"></div></div>
+        </div>
+        <div class="prog-item">
+          <div class="prog-item-row"><span class="prog-item-name">Стойка и перемещение</span><span class="prog-item-pct">100%</span></div>
+          <div class="prog-bar-track"><div class="prog-bar-fill" style="width:100%;"></div></div>
+        </div>
+        <div class="prog-item">
+          <div class="prog-item-row"><span class="prog-item-name">Атака с разбега</span><span class="prog-item-pct">37%</span></div>
+          <div class="prog-bar-track"><div class="prog-bar-fill" style="width:37%;"></div></div>
+        </div>
+        <div class="prog-item">
+          <div class="prog-item-row"><span class="prog-item-name">Верхняя подача</span><span class="prog-item-pct" style="color:#D3D1C7;">0%</span></div>
+          <div class="prog-bar-track"><div class="prog-bar-fill" style="width:0%;"></div></div>
+        </div>
+      </div>
+
+      <div class="achiev-wrap">
+        <div class="cal-label">Достижения</div>
+        <div class="achiev-row">
+          <div class="achiev earned">
+            <i class="ti ti-flame achiev-icon earned" aria-hidden="true"></i>
+            <span class="achiev-text earned">7 дней подряд</span>
+          </div>
+          <div class="achiev earned">
+            <i class="ti ti-star achiev-icon earned" aria-hidden="true"></i>
+            <span class="achiev-text earned">Первые 500 XP</span>
+          </div>
+          <div class="achiev">
+            <i class="ti ti-trophy achiev-icon" aria-hidden="true"></i>
+            <span class="achiev-text">30 дней подряд</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="bottom-nav">
+      <div class="nav-item"><i class="ti ti-home nav-icon" aria-hidden="true"></i><span class="nav-label">Путь</span></div>
+      <div class="nav-item"><i class="ti ti-chart-bar nav-icon active" aria-hidden="true"></i><span class="nav-label active">Прогресс</span></div>
+      <div class="nav-item"><i class="ti ti-trophy nav-icon" aria-hidden="true"></i><span class="nav-label">Достижения</span></div>
+      <div class="nav-item"><i class="ti ti-user nav-icon" aria-hidden="true"></i><span class="nav-label">Профиль</span></div>
+    </div>
+  </div>
+
+</div>

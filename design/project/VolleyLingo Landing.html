@@ -1,0 +1,1111 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Rovo — научись играть в волейбол за 10 минут в день</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Onest:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icons.min.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+:root{
+  --green:#1D9E75;
+  --green-dark:#0F6E56;
+  --green-darker:#085041;
+  --green-soft:#E1F5EE;
+  --green-mid:#5DCAA5;
+  --green-pale:#9FE1CB;
+  --bg:#FBFBF9;
+  --surface:#FFFFFF;
+  --ink:#15151A;
+  --ink-2:#2C2C2A;
+  --ink-3:#5F5E5A;
+  --ink-4:#888780;
+  --ink-5:#B4B2A9;
+  --border:#ECEAE3;
+  --border-2:#D3D1C7;
+  --warm-soft:#FAEEDA;
+  --warm-mid:#EFB668;
+  --warm-ink:#854F0B;
+  --warm-ink-2:#633806;
+  --sand:#F5F1E8;
+  --radius:18px;
+  --radius-lg:28px;
+  --heading-font:'Manrope';
+  --body-font:'Manrope';
+  --section-pad:90px;
+  --bg-tone:#FBFBF9;
+  --green-glow:rgba(29,158,117,.18);
+  --green-glow-mid:rgba(29,158,117,.14);
+  --green-shadow:rgba(29,158,117,.5);
+  --green-shadow-soft:rgba(29,158,117,.55);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:var(--bg-tone);color:var(--ink-2);font-family:var(--body-font),ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+h1,h2,h3{font-family:var(--heading-font),ui-sans-serif,system-ui,sans-serif;}
+body{overflow-x:hidden;}
+img,svg{display:block;max-width:100%;}
+button{font:inherit;color:inherit;border:0;background:transparent;cursor:pointer;}
+a{color:inherit;text-decoration:none;}
+
+/* ============ NAV ============ */
+.nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(140%) blur(14px);background:rgba(251,251,249,.75);border-bottom:.5px solid var(--border);}
+.nav-inner{max-width:1240px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;color:var(--ink);letter-spacing:-.01em;}
+.brand-mark{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 6px 16px -6px var(--green-shadow);overflow:hidden;}
+.brand-mark svg{width:100%;height:100%;display:block;}
+.brand-mark svg .mark-bg{fill:var(--green);}
+.nav-right{display:flex;align-items:center;gap:14px;}
+.lang-toggle{display:inline-flex;background:#fff;border:.5px solid var(--border);border-radius:999px;padding:3px;font-size:13px;font-weight:600;}
+.lang-toggle button{padding:6px 14px;border-radius:999px;color:var(--ink-4);transition:.18s;}
+.lang-toggle button.active{background:var(--ink);color:#fff;}
+.nav-cta{display:none;padding:9px 18px;border-radius:999px;background:var(--green);color:#fff;font-weight:600;font-size:13px;box-shadow:0 6px 14px -6px var(--green-shadow-soft);transition:.2s;}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 10px 22px -8px var(--green-shadow-soft);}
+@media(min-width:720px){.nav-cta{display:inline-flex;align-items:center;gap:6px;}}
+
+/* ============ Layout ============ */
+.shell{max-width:1240px;margin:0 auto;padding:0 32px;}
+@media(max-width:640px){.shell{padding:0 20px;}.nav-inner{padding:12px 20px;}}
+
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--green-dark);background:var(--green-soft);padding:6px 12px;border-radius:999px;}
+.kicker.warm{color:var(--warm-ink);background:var(--warm-soft);}
+.kicker.muted{color:var(--ink-4);background:#fff;border:.5px solid var(--border);}
+
+h1,h2,h3{color:var(--ink);letter-spacing:-.025em;text-wrap:balance;}
+.h1{font-size:clamp(40px,5.6vw,68px);font-weight:800;line-height:1.02;letter-spacing:-.03em;}
+.h2{font-size:clamp(30px,3.4vw,46px);font-weight:700;line-height:1.08;letter-spacing:-.028em;}
+.h3{font-size:22px;font-weight:700;line-height:1.2;letter-spacing:-.018em;}
+.lead{font-size:18px;line-height:1.55;color:var(--ink-3);text-wrap:pretty;}
+@media(max-width:640px){.lead{font-size:16px;}}
+
+/* ============ HERO ============ */
+.hero{position:relative;padding:48px 0 80px;overflow:hidden;}
+.hero::before{
+  content:"";position:absolute;inset:auto -10% -120px auto;width:780px;height:780px;border-radius:50%;
+  background:radial-gradient(closest-side,var(--green-glow),transparent);
+  pointer-events:none;z-index:0;
+}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;}
+@media(max-width:960px){.hero-grid{grid-template-columns:1fr;gap:48px;}}
+.hero h1 .accent{color:var(--green);}
+.hero h1 .strike{position:relative;display:inline-block;}
+.hero h1 .strike::after{content:"";position:absolute;left:-4px;right:-4px;bottom:.12em;height:.22em;background:var(--warm-mid);opacity:.5;border-radius:4px;z-index:-1;}
+.hero-sub{margin-top:22px;max-width:540px;}
+.hero-actions{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap;align-items:center;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:14px;font-weight:600;font-size:15px;transition:.2s;cursor:pointer;}
+.btn-primary{background:var(--green);color:#fff;box-shadow:0 12px 28px -10px var(--green-shadow-soft);}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 18px 38px -12px var(--green-shadow-soft);}
+.btn-ghost{color:var(--ink-2);border:.5px solid var(--border-2);background:#fff;}
+.btn-ghost:hover{border-color:var(--ink-3);}
+.hero-meta{display:flex;align-items:center;gap:16px;margin-top:24px;color:var(--ink-4);font-size:13px;flex-wrap:wrap;}
+.hero-meta .dot{width:6px;height:6px;border-radius:50%;background:var(--ink-5);}
+.hero-meta .live{display:inline-flex;align-items:center;gap:6px;color:var(--green-dark);}
+.hero-meta .live .pulse{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 var(--green-shadow);animation:pulse 1.6s infinite;}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--green-shadow-soft);}70%{box-shadow:0 0 0 10px transparent;}100%{box-shadow:0 0 0 0 transparent;}}
+
+/* phone showcase */
+.phone-stage{position:relative;display:flex;justify-content:center;align-items:flex-start;min-height:600px;}
+.phone-stage::before{
+  content:"";position:absolute;top:50%;left:50%;width:480px;height:480px;border-radius:50%;
+  background:radial-gradient(closest-side,var(--green-glow-mid),transparent 70%);
+  transform:translate(-50%,-50%);
+}
+.phone{position:relative;width:300px;background:#fff;border-radius:38px;border:.5px solid var(--border-2);overflow:hidden;box-shadow:0 40px 80px -30px rgba(15,46,40,.35),0 16px 40px -16px rgba(15,46,40,.18);}
+.phone-bar{height:10px;background:var(--green);}
+.phone-screen{background:#F8F9FA;}
+.phone-topbar{background:#fff;padding:16px 18px 12px;border-bottom:.5px solid #EAEAEA;}
+.phone-toprow{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.phone-greeting{font-size:12px;color:#888780;}
+.phone-username{font-size:16px;font-weight:600;color:#2C2C2A;letter-spacing:-.01em;}
+.streak-pill{display:inline-flex;align-items:center;gap:5px;background:#FAEEDA;border-radius:20px;padding:4px 10px;}
+.streak-num{font-size:13px;font-weight:700;color:#633806;}
+.streak-label{font-size:10px;color:#854F0B;}
+.xp-label{display:flex;justify-content:space-between;font-size:11px;color:#888780;margin-bottom:4px;}
+.xp-track{height:6px;background:#E1F5EE;border-radius:3px;overflow:hidden;}
+.xp-fill{height:100%;background:#1D9E75;border-radius:3px;width:62%;}
+
+.section-label{font-size:11px;font-weight:600;color:#888780;text-transform:uppercase;letter-spacing:.06em;padding:14px 18px 8px;}
+
+.tree{padding:0 14px 14px;}
+.node-row{display:flex;justify-content:center;gap:8px;margin-bottom:6px;}
+.node{border-radius:14px;padding:10px 12px;display:flex;align-items:center;gap:8px;min-width:118px;border:.5px solid transparent;}
+.node.done{background:#1D9E75;border-color:#0F6E56;}
+.node.done .node-title{color:#fff;}
+.node.done .node-sub{color:#9FE1CB;}
+.node.active{background:#E1F5EE;border:1.5px solid #5DCAA5;}
+.node.active .node-title{color:#085041;}
+.node.active .node-sub{color:#1D9E75;}
+.node.locked{background:#fff;border-color:#EAEAEA;}
+.node.locked .node-title{color:#B4B2A9;}
+.node.locked .node-sub{color:#D3D1C7;}
+.node-icon-wrap{width:18px;height:18px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.node.locked .node-icon-wrap{background:#F1EFE8;}
+.node.active .node-icon-wrap{background:transparent;width:auto;height:auto;}
+.node-title{font-size:12.5px;font-weight:600;line-height:1.2;}
+.node-sub{font-size:10px;margin-top:2px;line-height:1.3;font-weight:500;}
+.connector{display:flex;justify-content:center;margin:4px 0;}
+.connector-line{width:1.5px;height:14px;background:#D3D1C7;border-radius:1px;}
+
+.bottom-nav{background:#fff;border-top:.5px solid #EAEAEA;display:flex;justify-content:space-around;padding:10px 0 14px;}
+.bn-item{display:flex;flex-direction:column;align-items:center;gap:3px;}
+.bn-icon{font-size:18px;color:#B4B2A9;}
+.bn-icon.active{color:#1D9E75;}
+.bn-label{font-size:9px;color:#B4B2A9;font-weight:500;}
+.bn-label.active{color:#1D9E75;font-weight:700;}
+
+/* floating cards beside phone */
+.float-card{position:absolute;background:#fff;border-radius:14px;padding:12px 14px;box-shadow:0 16px 36px -12px rgba(15,46,40,.22),0 4px 10px -4px rgba(15,46,40,.08);border:.5px solid var(--border);display:flex;align-items:center;gap:10px;}
+.float-card .fc-icon{width:34px;height:34px;border-radius:10px;background:var(--green-soft);display:flex;align-items:center;justify-content:center;color:var(--green-dark);font-size:18px;flex-shrink:0;}
+.float-card .fc-icon.warm{background:var(--warm-soft);color:var(--warm-ink);}
+.float-card .fc-title{font-size:12px;font-weight:700;color:var(--ink);}
+.float-card .fc-sub{font-size:11px;color:var(--ink-4);margin-top:1px;}
+.fc-1{top:60px;left:-10px;animation:float 6s ease-in-out infinite;}
+.fc-2{bottom:90px;right:-20px;animation:float 6s ease-in-out infinite reverse;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+@media(max-width:640px){.fc-1{left:-4px;top:30px;}.fc-2{right:-4px;bottom:60px;}}
+
+/* ============ SECTIONS ============ */
+section.block{padding:var(--section-pad) 0;position:relative;}
+@media(max-width:640px){section.block{padding:calc(var(--section-pad) * .72) 0;}}
+.block-head{max-width:740px;margin-bottom:48px;}
+.block-head .h2{margin-top:14px;}
+.block-head .lead{margin-top:18px;}
+
+/* ============ PROBLEM ============ */
+.problem{background:linear-gradient(to bottom,transparent 0,var(--sand) 40%,var(--sand) 100%);transition:background .3s;}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+@media(max-width:780px){.problem-grid{grid-template-columns:1fr;}}
+.scen-card{background:#fff;border-radius:var(--radius-lg);padding:34px;border:.5px solid var(--border);position:relative;overflow:hidden;}
+.scen-card .scen-tag{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700;background:var(--green-soft);color:var(--green-dark);}
+.scen-card.b .scen-tag{background:var(--warm-soft);color:var(--warm-ink);}
+.scen-quote{font-family:var(--heading-font),sans-serif;font-size:22px;font-weight:600;color:var(--ink);line-height:1.32;letter-spacing:-.015em;margin:22px 0 18px;text-wrap:pretty;}
+.scen-line{display:flex;align-items:center;gap:10px;color:var(--ink-4);font-size:13.5px;border-top:.5px dashed var(--border-2);padding-top:14px;}
+.scen-line i{color:var(--ink-5);font-size:16px;}
+.scen-illu{position:absolute;right:24px;top:24px;font-size:32px;color:var(--ink-5);opacity:.5;}
+
+/* ============ HOW IT WORKS ============ */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative;}
+@media(max-width:860px){.steps{grid-template-columns:1fr;}}
+.step{background:#fff;border:.5px solid var(--border);border-radius:var(--radius-lg);padding:32px;position:relative;}
+.step-num{position:absolute;top:28px;right:28px;font-family:var(--heading-font),sans-serif;font-size:54px;font-weight:800;color:var(--green-soft);letter-spacing:-.04em;line-height:.9;}
+.step-icon{width:54px;height:54px;border-radius:16px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 12px 24px -10px var(--green-shadow-soft);}
+.step h3{margin-top:24px;}
+.step p{margin-top:10px;font-size:15px;color:var(--ink-3);line-height:1.55;}
+
+/* ============ DIFFERENTIATION ============ */
+.diff{background:var(--ink);color:#fff;border-radius:36px;margin:0 32px;padding:88px 80px;overflow:hidden;position:relative;}
+@media(max-width:960px){.diff{margin:0 20px;padding:56px 28px;border-radius:28px;}}
+.diff-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center;position:relative;z-index:1;}
+@media(max-width:960px){.diff-grid{grid-template-columns:1fr;gap:48px;}}
+.diff h2{color:#fff;}
+.diff h2 em{font-style:normal;color:var(--green-mid);}
+.diff p{color:rgba(255,255,255,.7);margin-top:20px;font-size:17px;line-height:1.6;max-width:520px;}
+.diff-list{margin-top:32px;display:flex;flex-direction:column;gap:14px;}
+.diff-list li{display:flex;align-items:flex-start;gap:14px;list-style:none;font-size:15.5px;color:rgba(255,255,255,.92);}
+.diff-list li .chk{width:24px;height:24px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;}
+.diff-list li.x .chk{background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);}
+.diff-list li.x{color:rgba(255,255,255,.45);text-decoration:line-through;text-decoration-color:rgba(255,255,255,.2);}
+.diff-orb{position:absolute;top:-150px;right:-150px;width:520px;height:520px;border-radius:50%;background:radial-gradient(closest-side,rgba(29,158,117,.4),transparent 70%);}
+
+/* phone in diff section — lesson screen */
+.diff-phone-stage{display:flex;justify-content:center;position:relative;}
+.diff-phone{width:280px;background:#fff;border-radius:34px;overflow:hidden;box-shadow:0 50px 100px -30px rgba(0,0,0,.7),0 20px 40px -10px rgba(0,0,0,.35);border:.5px solid #2a2a28;}
+.diff-phone .phone-bar{height:8px;}
+.dp-topbar{background:#fff;padding:14px 16px 10px;border-bottom:.5px solid #EAEAEA;}
+.dp-back-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.dp-back{font-size:18px;color:#1D9E75;}
+.dp-title{font-size:14px;font-weight:600;color:#2C2C2A;}
+.dp-sub{font-size:10.5px;color:#888780;}
+.dp-xp{display:inline-flex;align-items:center;gap:4px;background:#FAEEDA;border-radius:20px;padding:3px 8px;}
+.dp-xp-text{font-size:10px;font-weight:700;color:#633806;}
+.dp-prog-row{display:flex;align-items:center;gap:8px;margin-top:6px;}
+.dp-prog-track{flex:1;height:5px;background:#E1F5EE;border-radius:3px;overflow:hidden;}
+.dp-prog-fill{height:100%;background:#1D9E75;width:37%;}
+.dp-prog-label{font-size:11px;color:#1D9E75;font-weight:600;}
+
+.dp-video{background:linear-gradient(135deg,#1D9E75,#0F6E56);height:140px;position:relative;display:flex;align-items:center;justify-content:center;}
+.dp-video::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.04) 0 8px,transparent 8px 16px);}
+.dp-play{position:relative;z-index:1;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;backdrop-filter:blur(6px);}
+
+.dp-content{padding:16px;background:#F8F9FA;}
+.dp-lesson-title{font-size:14px;font-weight:700;color:#2C2C2A;}
+.dp-lesson-body{font-size:12px;color:#5F5E5A;line-height:1.55;margin-top:6px;}
+.dp-task{margin-top:14px;background:#E1F5EE;border:.5px solid #9FE1CB;border-radius:10px;padding:12px 14px;}
+.dp-task-label{font-size:10px;font-weight:700;color:#0F6E56;text-transform:uppercase;letter-spacing:.05em;}
+.dp-task-text{font-size:12px;color:#085041;line-height:1.5;margin-top:4px;}
+.dp-done{margin-top:14px;background:#1D9E75;border-radius:12px;padding:12px;text-align:center;color:#fff;font-size:13px;font-weight:700;}
+
+/* ============ PROGRAMS ============ */
+.prog-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+@media(max-width:1080px){.prog-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.prog-grid{grid-template-columns:1fr;}}
+.prog{background:#fff;border:.5px solid var(--border);border-radius:var(--radius-lg);padding:24px;position:relative;overflow:hidden;transition:.2s;display:flex;flex-direction:column;}
+.prog:hover{transform:translateY(-4px);box-shadow:0 28px 50px -22px rgba(15,46,40,.18);border-color:var(--green-pale);}
+.prog-cover{height:130px;border-radius:16px;margin-bottom:18px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:14px;}
+.prog-cover .prog-icon{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:11px;background:rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;color:var(--ink);font-size:20px;backdrop-filter:blur(4px);}
+.prog-cover.c1{background:linear-gradient(135deg,#9FE1CB,#5DCAA5);}
+.prog-cover.c2{background:linear-gradient(135deg,#BFE2F5,#7FB5DC);}
+.prog-cover.c3{background:linear-gradient(135deg,#FAEEDA,#EFB668);}
+.prog-cover.c4{background:linear-gradient(135deg,#F5D7A7,#E89B4C);}
+.prog-days{background:rgba(255,255,255,.92);color:var(--ink);padding:5px 10px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.02em;}
+.prog-title-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.prog-title{font-size:18px;font-weight:700;color:var(--ink);letter-spacing:-.015em;}
+.tag-pop{display:inline-flex;align-items:center;gap:4px;background:var(--warm-soft);color:var(--warm-ink);font-size:10px;font-weight:700;padding:3px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:.05em;}
+.prog-desc{font-size:14px;color:var(--ink-3);line-height:1.55;margin-top:10px;flex:1;}
+.prog-meta{display:flex;align-items:center;gap:8px;margin-top:16px;padding-top:14px;border-top:.5px dashed var(--border-2);font-size:12px;color:var(--ink-4);}
+.prog-meta i{font-size:14px;}
+
+/* ============ FINAL CTA ============ */
+.final{padding:90px 0 110px;}
+.final-card{background:linear-gradient(135deg,var(--green) 0%,var(--green-dark) 100%);border-radius:36px;padding:80px 64px;color:#fff;position:relative;overflow:hidden;text-align:center;}
+@media(max-width:640px){.final-card{padding:56px 28px;border-radius:28px;}}
+.final-card::before,.final-card::after{content:"";position:absolute;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.18),transparent 70%);pointer-events:none;}
+.final-card::before{width:520px;height:520px;top:-260px;left:-100px;}
+.final-card::after{width:420px;height:420px;bottom:-220px;right:-140px;}
+.final-inner{position:relative;z-index:1;max-width:680px;margin:0 auto;}
+.final h2{color:#fff;font-size:clamp(32px,4.2vw,52px);font-weight:800;letter-spacing:-.028em;line-height:1.05;}
+.final p{margin-top:18px;font-size:18px;color:rgba(255,255,255,.85);line-height:1.55;}
+.final-actions{margin-top:36px;display:flex;flex-direction:column;gap:14px;align-items:center;}
+.final-btn{background:#fff;color:var(--green-dark);padding:16px 30px;border-radius:14px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:8px;transition:.2s;box-shadow:0 18px 40px -14px rgba(0,0,0,.25);}
+.final-btn:hover{transform:translateY(-2px);}
+.final-mini{font-size:13px;color:rgba(255,255,255,.7);display:inline-flex;align-items:center;gap:6px;}
+
+/* ============ FOOTER ============ */
+footer{padding:48px 0 60px;border-top:.5px solid var(--border);}
+.foot-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;color:var(--ink-4);font-size:13px;}
+.foot-links{display:flex;gap:22px;}
+.foot-links a:hover{color:var(--ink-2);}
+
+/* hide elements without lang */
+[data-en],[data-ru]{}
+
+/* feature toggles via body classes */
+body.hide-floaters .float-card{display:none;}
+body.hide-popular .tag-pop{display:none;}
+body.hide-strike .hero h1 .strike::after{display:none;}
+body.hide-diff{}
+body.hide-diff section[data-screen-label="04 Differentiation"]{display:none;}
+
+</style>
+</head>
+<body>
+
+<!-- =========== NAV =========== -->
+<nav class="nav" data-screen-label="00 Nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-mark" aria-label="Rovo">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <rect class="mark-bg" width="64" height="64" rx="16"></rect>
+          <path d="M28 52 L28 38 L22 30" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M28 38 L36 32" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"></path>
+          <circle cx="22" cy="26" r="4" fill="none" stroke="#fff" stroke-width="2"></circle>
+          <path d="M36 32 Q44 24 48 16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"></path>
+          <circle cx="48" cy="14" r="4" fill="#fff"></circle>
+        </svg>
+      </div>
+      <span>Rovo</span>
+    </div>
+    <div class="nav-right">
+      <div class="lang-toggle" role="tablist" aria-label="Language">
+        <button data-lang="ru" class="active" role="tab" aria-selected="true">RU</button>
+        <button data-lang="en" role="tab" aria-selected="false">EN</button>
+      </div>
+      <a href="#final" class="nav-cta">
+        <span data-ru="Хочу попробовать" data-en="I want to try">Хочу попробовать</span>
+        <i class="ti ti-arrow-right" style="font-size:14px;"></i>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- =========== HERO =========== -->
+<section class="block hero" data-screen-label="01 Hero">
+  <div class="shell hero-grid">
+    <div>
+      <span class="kicker">
+        <i class="ti ti-sparkles" style="font-size:13px;"></i>
+        <span data-tweak-key="heroKickerRu" data-ru="Бета · скоро в App Store и Google Play" data-en="Beta · coming to App Store and Google Play">Бета · скоро в App Store и Google Play</span>
+      </span>
+
+      <h1 class="h1" style="margin-top:22px;">
+        <span data-tweak-key="heroH1L1Ru" data-ru="Научись <span class=&quot;accent&quot;>атаковать.</span>" data-en="Learn to <span class=&quot;accent&quot;>attack.</span>">Научись <span class="accent">атаковать.</span></span><br>
+        <span data-tweak-key="heroH1L2Ru" data-ru="Научись <span class=&quot;accent&quot;>принимать.</span>" data-en="Learn to <span class=&quot;accent&quot;>receive.</span>">Научись <span class="accent">принимать.</span></span><br>
+        <span data-tweak-key="heroH1L3Ru" data-ru="Начни <span class=&quot;strike&quot;>выигрывать.</span>" data-en="Start <span class=&quot;strike&quot;>winning.</span>">Начни <span class="strike">выигрывать.</span></span>
+      </h1>
+
+      <p class="lead hero-sub" data-tweak-key="heroSubRu" data-ru="Всего 10 минут в день. Дерево навыков, короткие уроки, реальный прогресс." data-en="Just 10 minutes a day. Skill tree, short lessons, real progress.">Всего 10 минут в день. Дерево навыков, короткие уроки, реальный прогресс.</p>
+
+      <div class="hero-actions">
+        <a href="#final" class="btn btn-primary">
+          <span data-tweak-key="heroCtaRu" data-ru="Хочу попробовать" data-en="I want to try">Хочу попробовать</span>
+          <i class="ti ti-arrow-right" style="font-size:16px;"></i>
+        </a>
+        <a href="#how" class="btn btn-ghost">
+          <i class="ti ti-player-play" style="font-size:16px;color:var(--green);"></i>
+          <span data-tweak-key="heroSecCtaRu" data-ru="Как это работает" data-en="How it works">Как это работает</span>
+        </a>
+      </div>
+
+      <div class="hero-meta">
+        <span class="live">
+          <span class="pulse"></span>
+          <span data-ru="Открытая бета" data-en="Open beta">Открытая бета</span>
+        </span>
+        <span class="dot"></span>
+        <span data-ru="10 минут в день" data-en="10 minutes a day">10 минут в день</span>
+        <span class="dot"></span>
+        <span data-ru="iOS · Android" data-en="iOS · Android">iOS · Android</span>
+      </div>
+    </div>
+
+    <!-- Phone mockup with skill tree -->
+    <div class="phone-stage">
+      <div class="float-card fc-1">
+        <div class="fc-icon"><i class="ti ti-flame"></i></div>
+        <div>
+          <div class="fc-title" data-ru="7 дней подряд" data-en="7 day streak">7 дней подряд</div>
+          <div class="fc-sub" data-ru="не сорвись!" data-en="don't break it!">не сорвись!</div>
+        </div>
+      </div>
+      <div class="float-card fc-2">
+        <div class="fc-icon warm"><i class="ti ti-trophy"></i></div>
+        <div>
+          <div class="fc-title" data-ru="+30 XP" data-en="+30 XP">+30 XP</div>
+          <div class="fc-sub" data-ru="урок пройден" data-en="lesson complete">урок пройден</div>
+        </div>
+      </div>
+
+      <div class="phone">
+        <div class="phone-bar"></div>
+        <div class="phone-screen">
+          <div class="phone-topbar">
+            <div class="phone-toprow">
+              <div>
+                <div class="phone-greeting" data-ru="Привет," data-en="Hi,">Привет,</div>
+                <div class="phone-username" data-ru="Алексей" data-en="Alex">Алексей</div>
+              </div>
+              <div class="streak-pill">
+                <i class="ti ti-flame" style="font-size:14px;color:#854F0B;"></i>
+                <span class="streak-num">7</span>
+                <span class="streak-label" data-ru="дней" data-en="days">дней</span>
+              </div>
+            </div>
+            <div>
+              <div class="xp-label">
+                <span data-ru="Уровень 4" data-en="Level 4">Уровень 4</span>
+                <span>620 / 1000 XP</span>
+              </div>
+              <div class="xp-track"><div class="xp-fill"></div></div>
+            </div>
+          </div>
+
+          <div class="section-label" data-ru="МОЙ ПУТЬ" data-en="MY PATH">МОЙ ПУТЬ</div>
+
+          <div class="tree">
+            <div class="node-row">
+              <div class="node done">
+                <div class="node-icon-wrap"><i class="ti ti-check" style="font-size:11px;color:#1D9E75;"></i></div>
+                <div>
+                  <div class="node-title" data-ru="Основы игры" data-en="Game basics">Основы игры</div>
+                  <div class="node-sub" data-ru="4 урока" data-en="4 lessons">4 урока</div>
+                </div>
+              </div>
+            </div>
+            <div class="connector"><div class="connector-line"></div></div>
+            <div class="node-row">
+              <div class="node done">
+                <div class="node-icon-wrap"><i class="ti ti-check" style="font-size:11px;color:#1D9E75;"></i></div>
+                <div>
+                  <div class="node-title" data-ru="Стойка и перемещение" data-en="Stance & footwork">Стойка и перемещение</div>
+                  <div class="node-sub" data-ru="пройдено" data-en="complete">пройдено</div>
+                </div>
+              </div>
+            </div>
+            <div class="connector"><div class="connector-line"></div></div>
+            <div class="node-row" style="gap:6px;">
+              <div class="node done" style="min-width:108px;">
+                <div class="node-icon-wrap"><i class="ti ti-check" style="font-size:11px;color:#1D9E75;"></i></div>
+                <div>
+                  <div class="node-title" data-ru="Верхняя передача" data-en="Overhand pass">Верхняя передача</div>
+                  <div class="node-sub" data-ru="6 уроков" data-en="6 lessons">6 уроков</div>
+                </div>
+              </div>
+              <div class="node done" style="min-width:108px;">
+                <div class="node-icon-wrap"><i class="ti ti-check" style="font-size:11px;color:#1D9E75;"></i></div>
+                <div>
+                  <div class="node-title" data-ru="Нижняя передача" data-en="Bump pass">Нижняя передача</div>
+                  <div class="node-sub" data-ru="6 уроков" data-en="6 lessons">6 уроков</div>
+                </div>
+              </div>
+            </div>
+            <div class="connector"><div class="connector-line"></div></div>
+            <div class="node-row">
+              <div class="node active">
+                <i class="ti ti-player-play" style="font-size:18px;color:#1D9E75;"></i>
+                <div>
+                  <div class="node-title" data-ru="Атака с разбега" data-en="Approach attack">Атака с разбега</div>
+                  <div class="node-sub" data-ru="урок 3 из 8 · сейчас" data-en="lesson 3 of 8 · now">урок 3 из 8 · сейчас</div>
+                </div>
+              </div>
+            </div>
+            <div class="connector"><div class="connector-line"></div></div>
+            <div class="node-row" style="gap:6px;">
+              <div class="node locked" style="min-width:108px;">
+                <div class="node-icon-wrap"><i class="ti ti-lock" style="font-size:11px;color:#B4B2A9;"></i></div>
+                <div>
+                  <div class="node-title" data-ru="Верхняя подача" data-en="Top serve">Верхняя подача</div>
+                  <div class="node-sub" data-ru="6 уроков" data-en="6 lessons">6 уроков</div>
+                </div>
+              </div>
+              <div class="node locked" style="min-width:108px;">
+                <div class="node-icon-wrap"><i class="ti ti-lock" style="font-size:11px;color:#B4B2A9;"></i></div>
+                <div>
+                  <div class="node-title" data-ru="Блок" data-en="Block">Блок</div>
+                  <div class="node-sub" data-ru="6 уроков" data-en="6 lessons">6 уроков</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom-nav">
+            <div class="bn-item"><i class="ti ti-home bn-icon active"></i><span class="bn-label active" data-ru="Путь" data-en="Path">Путь</span></div>
+            <div class="bn-item"><i class="ti ti-chart-bar bn-icon"></i><span class="bn-label" data-ru="Прогресс" data-en="Stats">Прогресс</span></div>
+            <div class="bn-item"><i class="ti ti-trophy bn-icon"></i><span class="bn-label" data-ru="Награды" data-en="Awards">Награды</span></div>
+            <div class="bn-item"><i class="ti ti-user bn-icon"></i><span class="bn-label" data-ru="Профиль" data-en="Profile">Профиль</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========== PROBLEM =========== -->
+<section class="block problem" data-screen-label="02 Problem">
+  <div class="shell">
+    <div class="block-head">
+      <span class="kicker muted">
+        <i class="ti ti-target" style="font-size:13px;"></i>
+        <span data-tweak-key="problemKickerRu" data-ru="Знакомо?" data-en="Sound familiar?">Знакомо?</span>
+      </span>
+      <h2 class="h2" data-tweak-key="problemH2Ru" data-ru="Вы выходите на площадку — и что-то идёт не так." data-en="You step on the court — and something's off.">Вы выходите на площадку — и что-то идёт не так.</h2>
+      <p class="lead" data-tweak-key="problemLeadRu" data-ru="Мы строим Rovo для двух людей. Возможно, один из них — это вы." data-en="We're building Rovo for two people. One of them might be you.">Мы строим VolleyLingo для двух людей. Возможно, один из них — это вы.</p>
+    </div>
+
+    <div class="problem-grid">
+      <article class="scen-card a">
+        <i class="ti ti-mood-confuzed scen-illu"></i>
+        <span class="scen-tag">
+          <i class="ti ti-user" style="font-size:13px;"></i>
+          <span data-tweak-key="scenATagRu" data-ru="Новичок" data-en="Beginner">Новичок</span>
+        </span>
+        <p class="scen-quote" data-tweak-key="scenAQuoteRu" data-ru="«Выхожу на площадку и не знаю, куда встать. Мяч летит — и я не успеваю»." data-en="&quot;I step on the court and don't know where to stand. The ball flies — and I'm always a second late.&quot;">«Выхожу на площадку и не знаю, куда встать. Мяч летит — и я не успеваю».</p>
+        <div class="scen-line">
+          <i class="ti ti-bulb"></i>
+          <span data-ru="Нужна база: стойка, перемещение, первые касания." data-en="Needs the basics: stance, footwork, first touches.">Нужна база: стойка, перемещение, первые касания.</span>
+        </div>
+      </article>
+
+      <article class="scen-card b">
+        <i class="ti ti-mood-meh scen-illu"></i>
+        <span class="scen-tag">
+          <i class="ti ti-users" style="font-size:13px;"></i>
+          <span data-tweak-key="scenBTagRu" data-ru="Любитель в клубе" data-en="Club player">Любитель в клубе</span>
+        </span>
+        <p class="scen-quote" data-tweak-key="scenBQuoteRu" data-ru="«Играю год, но атака не идёт. Смотрю YouTube — лучше не становится»." data-en="&quot;I've played for a year, but my attack still won't click. I watch YouTube — nothing changes.&quot;">«Играю год, но атака не идёт. Смотрю YouTube — лучше не становится».</p>
+        <div class="scen-line">
+          <i class="ti ti-bulb"></i>
+          <span data-ru="Нужна структура: путь и обратная связь, а не очередное видео." data-en="Needs structure: a real path and feedback, not another video.">Нужна структура: путь и обратная связь, а не очередное видео.</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =========== HOW IT WORKS =========== -->
+<section class="block" id="how" data-screen-label="03 How it works">
+  <div class="shell">
+    <div class="block-head">
+      <span class="kicker">
+        <i class="ti ti-route" style="font-size:13px;"></i>
+        <span data-tweak-key="howKickerRu" data-ru="Как это работает" data-en="How it works">Как это работает</span>
+      </span>
+      <h2 class="h2" data-tweak-key="howH2Ru" data-ru="Три шага — и площадка станет понятнее." data-en="Three steps — and the court starts making sense.">Три шага — и площадка станет понятнее.</h2>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">01</span>
+        <div class="step-icon"><i class="ti ti-route-2"></i></div>
+        <h3 class="h3" data-tweak-key="step1TitleRu" data-ru="Выбери свой путь" data-en="Choose your path">Выбери свой путь</h3>
+        <p data-tweak-key="step1DescRu" data-ru="Новичок, нападающий, либеро или пляжник — дерево навыков подстраивается под тебя." data-en="Beginner, attacker, libero or beach player — the skill tree adapts to you.">Новичок, нападающий, либеро или пляжник — дерево навыков подстраивается под тебя.</p>
+      </div>
+
+      <div class="step">
+        <span class="step-num">02</span>
+        <div class="step-icon"><i class="ti ti-player-play"></i></div>
+        <h3 class="h3" data-tweak-key="step2TitleRu" data-ru="Проходи короткие уроки" data-en="Take short lessons">Проходи короткие уроки</h3>
+        <p data-tweak-key="step2DescRu" data-ru="Видео, объяснение, задание. 10 минут — и ты на шаг ближе к площадке." data-en="Video, explanation, task. 10 minutes — and you're one step closer to the court.">Видео, объяснение, задание. 10 минут — и ты на шаг ближе к площадке.</p>
+      </div>
+
+      <div class="step">
+        <span class="step-num">03</span>
+        <div class="step-icon"><i class="ti ti-trending-up"></i></div>
+        <h3 class="h3" data-tweak-key="step3TitleRu" data-ru="Следи за прогрессом" data-en="Track your progress">Следи за прогрессом</h3>
+        <p data-tweak-key="step3DescRu" data-ru="XP, уровни, серии дней. Видимый прогресс — это то, что заставляет возвращаться." data-en="XP, levels, daily streaks. Visible progress is what keeps you coming back.">XP, уровни, серии дней. Видимый прогресс — это то, что заставляет возвращаться.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========== DIFFERENTIATION =========== -->
+<section class="block" data-screen-label="04 Differentiation" style="padding-top:30px;">
+  <div class="diff">
+    <div class="diff-orb"></div>
+    <div class="diff-grid">
+      <div>
+        <span class="kicker" style="background:rgba(29,158,117,.2);color:var(--green-mid);">
+          <i class="ti ti-bolt" style="font-size:13px;"></i>
+          <span data-tweak-key="diffKickerRu" data-ru="Чем мы отличаемся" data-en="What makes us different">Чем мы отличаемся</span>
+        </span>
+        <h2 class="h2" style="margin-top:20px;">
+          <span data-tweak-key="diffH2aRu" data-ru="Короткие уроки. Дерево навыков. " data-en="Short lessons. Skill tree. ">Короткие уроки. Дерево навыков. </span>
+          <em data-tweak-key="diffH2bRu" data-ru="Реальный прогресс." data-en="Real progress.">Реальный прогресс.</em>
+        </h2>
+        <p data-tweak-key="diffPRu" data-ru="Другие приложения дают тебе каталог из 50 видео и говорят «смотри». Мы даём путь — и ведём по нему шаг за шагом." data-en="Other apps hand you a catalog of 50 videos and say &quot;watch.&quot; We give you a path — and walk you through it, step by step.">Другие приложения дают тебе каталог из 50 видео и говорят «смотри». Мы даём путь — и ведём по нему шаг за шагом.</p>
+
+        <ul class="diff-list">
+          <li><span class="chk"><i class="ti ti-check"></i></span><span data-ru="Один следующий шаг — всегда понятно, что делать" data-en="One next step — always clear what to do">Один следующий шаг — всегда понятно, что делать</span></li>
+          <li><span class="chk"><i class="ti ti-check"></i></span><span data-ru="Уроки по 10 минут — успеешь до тренировки" data-en="10-minute lessons — fits before practice">Уроки по 10 минут — успеешь до тренировки</span></li>
+          <li><span class="chk"><i class="ti ti-check"></i></span><span data-ru="Задания на площадке, а не только теория" data-en="Real on-court tasks, not just theory">Задания на площадке, а не только теория</span></li>
+          <li class="x"><span class="chk"><i class="ti ti-x"></i></span><span data-ru="Бесконечный каталог видео" data-en="Endless video library">Бесконечный каталог видео</span></li>
+          <li class="x"><span class="chk"><i class="ti ti-x"></i></span><span data-ru="Курсы на 10 часов «обо всём сразу»" data-en="10-hour &quot;everything at once&quot; courses">Курсы на 10 часов «обо всём сразу»</span></li>
+        </ul>
+      </div>
+
+      <div class="diff-phone-stage">
+        <div class="diff-phone">
+          <div class="phone-bar"></div>
+          <div class="dp-topbar">
+            <div class="dp-back-row">
+              <i class="ti ti-arrow-left dp-back"></i>
+              <div style="flex:1;">
+                <div class="dp-title" data-ru="Атака с разбега" data-en="Approach attack">Атака с разбега</div>
+                <div class="dp-sub" data-ru="Уровень 1 · Игровые навыки" data-en="Level 1 · Game skills">Уровень 1 · Игровые навыки</div>
+              </div>
+              <div class="dp-xp">
+                <i class="ti ti-star" style="font-size:10px;color:#854F0B;"></i>
+                <span class="dp-xp-text">+30 XP</span>
+              </div>
+            </div>
+            <div class="dp-prog-row">
+              <div class="dp-prog-track"><div class="dp-prog-fill"></div></div>
+              <span class="dp-prog-label">3 / 8</span>
+            </div>
+          </div>
+
+          <div class="dp-video">
+            <div class="dp-play"><i class="ti ti-player-play-filled" style="margin-left:2px;"></i></div>
+          </div>
+
+          <div class="dp-content">
+            <div class="dp-lesson-title" data-ru="Разбег: четыре шага" data-en="Approach: four steps">Разбег: четыре шага</div>
+            <div class="dp-lesson-body" data-ru="Правильный разбег — основа мощной атаки. Два медленных шага, резкое ускорение на третьем, толчок двумя ногами на четвёртом." data-en="A clean approach is the basis of a powerful attack. Two slow steps, sharp acceleration on the third, push off both legs on the fourth.">Правильный разбег — основа мощной атаки. Два медленных шага, резкое ускорение на третьем, толчок двумя ногами на четвёртом.</div>
+
+            <div class="dp-task">
+              <div class="dp-task-label" data-ru="Задание" data-en="Task">Задание</div>
+              <div class="dp-task-text" data-ru="Выполни разбег без мяча 5 раз подряд. Сосредоточься на толчке двумя ногами." data-en="Run through the approach without the ball 5 times in a row. Focus on the two-footed push.">Выполни разбег без мяча 5 раз подряд. Сосредоточься на толчке двумя ногами.</div>
+            </div>
+
+            <div class="dp-done" data-ru="Задание выполнено" data-en="Task complete">Задание выполнено</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========== PROGRAMS =========== -->
+<section class="block" data-screen-label="05 Programs">
+  <div class="shell">
+    <div class="block-head">
+      <span class="kicker">
+        <i class="ti ti-stack-2" style="font-size:13px;"></i>
+        <span data-tweak-key="progKickerRu" data-ru="Программы" data-en="Programs">Программы</span>
+      </span>
+      <h2 class="h2" data-tweak-key="progH2Ru" data-ru="Выбери, с чего начать." data-en="Pick where to start.">Выбери, с чего начать.</h2>
+      <p class="lead" data-tweak-key="progLeadRu" data-ru="Каждая программа — это законченный путь. Можно идти по нему одному или комбинировать несколько." data-en="Each program is a complete path. Take one or combine several.">Каждая программа — это законченный путь. Можно идти по нему одному или комбинировать несколько.</p>
+    </div>
+
+    <div class="prog-grid">
+      <article class="prog">
+        <div class="prog-cover c1">
+          <div class="prog-icon"><i class="ti ti-seeding"></i></div>
+          <span class="prog-days" data-ru="30 дней" data-en="30 days">30 дней</span>
+        </div>
+        <div class="prog-title-row">
+          <div class="prog-title" data-tweak-key="prog1TitleRu" data-ru="Новичок" data-en="Beginner">Новичок</div>
+          <span class="tag-pop" data-ru="популярное" data-en="popular">популярное</span>
+        </div>
+        <p class="prog-desc" data-tweak-key="prog1DescRu" data-ru="С нуля до уверенной игры. Стойка, передачи, первая подача." data-en="From zero to confident play. Stance, passes, first serve.">С нуля до уверенной игры. Стойка, передачи, первая подача.</p>
+        <div class="prog-meta">
+          <i class="ti ti-clock"></i>
+          <span data-ru="~10 мин в день" data-en="~10 min a day">~10 мин в день</span>
+        </div>
+      </article>
+
+      <article class="prog">
+        <div class="prog-cover c2">
+          <div class="prog-icon"><i class="ti ti-shield"></i></div>
+          <span class="prog-days" data-ru="14 дней" data-en="14 days">14 дней</span>
+        </div>
+        <div class="prog-title-row">
+          <div class="prog-title" data-tweak-key="prog2TitleRu" data-ru="Уверенный приём" data-en="Solid reception">Уверенный приём</div>
+        </div>
+        <p class="prog-desc" data-tweak-key="prog2DescRu" data-ru="Приём подачи, позиция, чтение атаки соперника." data-en="Serve receive, positioning, reading the opponent's attack.">Приём подачи, позиция, чтение атаки соперника.</p>
+        <div class="prog-meta">
+          <i class="ti ti-clock"></i>
+          <span data-ru="~10 мин в день" data-en="~10 min a day">~10 мин в день</span>
+        </div>
+      </article>
+
+      <article class="prog">
+        <div class="prog-cover c3">
+          <div class="prog-icon"><i class="ti ti-flame"></i></div>
+          <span class="prog-days" data-ru="30 дней" data-en="30 days">30 дней</span>
+        </div>
+        <div class="prog-title-row">
+          <div class="prog-title" data-tweak-key="prog3TitleRu" data-ru="Нападающий" data-en="Attacker">Нападающий</div>
+        </div>
+        <p class="prog-desc" data-tweak-key="prog3DescRu" data-ru="Разбег, удар, линия и диагональ. Стань опасным на сетке." data-en="Approach, swing, line and angle. Become a threat at the net.">Разбег, удар, линия и диагональ. Стань опасным на сетке.</p>
+        <div class="prog-meta">
+          <i class="ti ti-clock"></i>
+          <span data-ru="~10 мин в день" data-en="~10 min a day">~10 мин в день</span>
+        </div>
+      </article>
+
+      <article class="prog">
+        <div class="prog-cover c4">
+          <div class="prog-icon"><i class="ti ti-beach"></i></div>
+          <span class="prog-days" data-ru="полный курс" data-en="full course">полный курс</span>
+        </div>
+        <div class="prog-title-row">
+          <div class="prog-title" data-tweak-key="prog4TitleRu" data-ru="Пляжный волейбол" data-en="Beach volleyball">Пляжный волейбол</div>
+        </div>
+        <p class="prog-desc" data-tweak-key="prog4DescRu" data-ru="Тактика 2×2, песок, ветер, сигналы. Отдельный полный курс." data-en="2v2 tactics, sand, wind, hand signals. A complete separate course.">Тактика 2×2, песок, ветер, сигналы. Отдельный полный курс.</p>
+        <div class="prog-meta">
+          <i class="ti ti-clock"></i>
+          <span data-ru="~10 мин в день" data-en="~10 min a day">~10 мин в день</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =========== FINAL CTA =========== -->
+<section class="block final" id="final" data-screen-label="06 Final CTA">
+  <div class="shell">
+    <div class="final-card">
+      <div class="final-inner">
+        <span class="kicker" style="background:rgba(255,255,255,.18);color:#fff;">
+          <i class="ti ti-bolt" style="font-size:13px;"></i>
+          <span data-tweak-key="finalKickerRu" data-ru="Мы строим прямо сейчас" data-en="We're building right now">Мы строим прямо сейчас</span>
+        </span>
+        <h2 style="margin-top:22px;" data-tweak-key="finalH2Ru" data-ru="Тебе было бы интересно такое приложение?" data-en="Would you use an app like this?">Тебе было бы интересно такое приложение?</h2>
+        <p data-tweak-key="finalPRu" data-ru="Мы строим Rovo прямо сейчас. Ответь на один вопрос — это поможет нам сделать его лучше." data-en="We're building Rovo right now. Answer one question — it helps us make it better.">Мы строим VolleyLingo прямо сейчас. Ответь на один вопрос — это поможет нам сделать его лучше.</p>
+        <div class="final-actions">
+          <a href="#" class="final-btn">
+            <span data-tweak-key="ctaTextRu" data-ru="Ответить на вопрос" data-en="Answer one question">Ответить на вопрос</span>
+            <i class="ti ti-arrow-right" style="font-size:18px;"></i>
+          </a>
+          <span class="final-mini">
+            <i class="ti ti-clock" style="font-size:13px;"></i>
+            <span data-tweak-key="finalMiniRu" data-ru="одна минута — без регистрации" data-en="one minute — no signup">одна минута — без регистрации</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========== FOOTER =========== -->
+<footer>
+  <div class="shell foot-inner">
+    <div class="brand">
+      <div class="brand-mark" aria-label="Rovo">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <rect class="mark-bg" width="64" height="64" rx="16"></rect>
+          <path d="M28 52 L28 38 L22 30" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M28 38 L36 32" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"></path>
+          <circle cx="22" cy="26" r="4" fill="none" stroke="#fff" stroke-width="2"></circle>
+          <path d="M36 32 Q44 24 48 16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"></path>
+          <circle cx="48" cy="14" r="4" fill="#fff"></circle>
+        </svg>
+      </div>
+      <span>Rovo</span>
+    </div>
+    <div class="foot-links">
+      <a href="#" data-ru="О проекте" data-en="About">О проекте</a>
+      <a href="#" data-ru="Контакты" data-en="Contact">Контакты</a>
+      <a href="#" data-ru="Telegram" data-en="Telegram">Telegram</a>
+    </div>
+    <div data-ru="© 2026 · Сделано с любовью к волейболу" data-en="© 2026 · Made with love for volleyball">© 2026 · Сделано с любовью к волейболу</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const TITLES = {
+    ru: "Rovo — научись играть в волейбол за 10 минут в день",
+    en: "Rovo — learn volleyball in 10 minutes a day"
+  };
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.title = TITLES[lang];
+    document.querySelectorAll('[data-ru][data-en]').forEach(el=>{
+      const txt = el.getAttribute('data-' + lang);
+      if(txt !== null) el.innerHTML = txt;
+    });
+    document.querySelectorAll('.lang-toggle button').forEach(b=>{
+      const active = b.getAttribute('data-lang') === lang;
+      b.classList.toggle('active', active);
+      b.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    try{ localStorage.setItem('vl_lang', lang); }catch(e){}
+  }
+  document.querySelectorAll('.lang-toggle button').forEach(b=>{
+    b.addEventListener('click', ()=> setLang(b.getAttribute('data-lang')));
+  });
+  let saved = 'ru';
+  try{ saved = localStorage.getItem('vl_lang') || 'ru'; }catch(e){}
+  setLang(saved);
+})();
+</script>
+
+<!-- ============ Tweaks panel ============ -->
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accent": "#1D9E75",
+  "headingFont": "Manrope",
+  "bodyFont": "Manrope",
+  "bgTone": "warm",
+  "sectionPad": 90,
+  "showFloaters": true,
+  "showPopular": true,
+  "showStrike": true,
+  "showDiff": true,
+
+  "heroKickerRu": "Beta · скоро в App Store и Google Play",
+  "heroKickerEn": "Beta · coming to App Store and Google Play",
+  "heroH1L1Ru": "Научись <span class=\"accent\">атаковать.</span>",
+  "heroH1L1En": "Learn to <span class=\"accent\">attack.</span>",
+  "heroH1L2Ru": "Научись <span class=\"accent\">принимать.</span>",
+  "heroH1L2En": "Learn to <span class=\"accent\">receive.</span>",
+  "heroH1L3Ru": "Начни <span class=\"strike\">выигрывать.</span>",
+  "heroH1L3En": "Start <span class=\"strike\">winning.</span>",
+  "heroSubRu": "Всего 10 минут в день. Дерево навыков, короткие уроки, реальный прогресс.",
+  "heroSubEn": "Just 10 minutes a day. Skill tree, short lessons, real progress.",
+  "heroCtaRu": "Хочу попробовать",
+  "heroCtaEn": "I want to try",
+  "heroSecCtaRu": "Как это работает",
+  "heroSecCtaEn": "How it works",
+
+  "problemKickerRu": "Знакомо?",
+  "problemKickerEn": "Sound familiar?",
+  "problemH2Ru": "Вы выходите на площадку — и что-то идёт не так.",
+  "problemH2En": "You step on the court — and something's off.",
+  "problemLeadRu": "Мы строим Rovo для двух людей. Возможно, один из них — это вы.",
+  "problemLeadEn": "We're building Rovo for two people. One of them might be you.",
+  "scenATagRu": "Новичок",
+  "scenATagEn": "Beginner",
+  "scenAQuoteRu": "«Выхожу на площадку и не знаю, куда встать. Мяч летит — и я не успеваю».",
+  "scenAQuoteEn": "\"I step on the court and don't know where to stand. The ball flies — and I'm always a second late.\"",
+  "scenBTagRu": "Любитель в клубе",
+  "scenBTagEn": "Club player",
+  "scenBQuoteRu": "«Играю год, но атака не идёт. Смотрю YouTube — лучше не становится».",
+  "scenBQuoteEn": "\"I've played for a year, but my attack still won't click. I watch YouTube — nothing changes.\"",
+
+  "howKickerRu": "Как это работает",
+  "howKickerEn": "How it works",
+  "howH2Ru": "Три шага — и площадка станет понятнее.",
+  "howH2En": "Three steps — and the court starts making sense.",
+  "step1TitleRu": "Выбери свой путь",
+  "step1TitleEn": "Choose your path",
+  "step1DescRu": "Новичок, нападающий, либеро или пляжник — дерево навыков подстраивается под тебя.",
+  "step1DescEn": "Beginner, attacker, libero or beach player — the skill tree adapts to you.",
+  "step2TitleRu": "Проходи короткие уроки",
+  "step2TitleEn": "Take short lessons",
+  "step2DescRu": "Видео, объяснение, задание. 10 минут — и ты на шаг ближе к площадке.",
+  "step2DescEn": "Video, explanation, task. 10 minutes — and you're one step closer to the court.",
+  "step3TitleRu": "Следи за прогрессом",
+  "step3TitleEn": "Track your progress",
+  "step3DescRu": "XP, уровни, серии дней. Видимый прогресс — это то, что заставляет возвращаться.",
+  "step3DescEn": "XP, levels, daily streaks. Visible progress is what keeps you coming back.",
+
+  "diffKickerRu": "Чем мы отличаемся",
+  "diffKickerEn": "What makes us different",
+  "diffH2aRu": "Короткие уроки. Дерево навыков. ",
+  "diffH2aEn": "Short lessons. Skill tree. ",
+  "diffH2bRu": "Реальный прогресс.",
+  "diffH2bEn": "Real progress.",
+  "diffPRu": "Другие приложения дают тебе каталог из 50 видео и говорят «смотри». Мы даём путь — и ведём по нему шаг за шагом.",
+  "diffPEn": "Other apps hand you a catalog of 50 videos and say \"watch.\" We give you a path — and walk you through it, step by step.",
+
+  "progKickerRu": "Программы",
+  "progKickerEn": "Programs",
+  "progH2Ru": "Выбери, с чего начать.",
+  "progH2En": "Pick where to start.",
+  "progLeadRu": "Каждая программа — это законченный путь. Можно идти по нему одному или комбинировать несколько.",
+  "progLeadEn": "Each program is a complete path. Take one or combine several.",
+  "prog1TitleRu": "Новичок",
+  "prog1TitleEn": "Beginner",
+  "prog1DescRu": "С нуля до уверенной игры. Стойка, передачи, первая подача.",
+  "prog1DescEn": "From zero to confident play. Stance, passes, first serve.",
+  "prog2TitleRu": "Уверенный приём",
+  "prog2TitleEn": "Solid reception",
+  "prog2DescRu": "Приём подачи, позиция, чтение атаки соперника.",
+  "prog2DescEn": "Serve receive, positioning, reading the opponent's attack.",
+  "prog3TitleRu": "Нападающий",
+  "prog3TitleEn": "Attacker",
+  "prog3DescRu": "Разбег, удар, линия и диагональ. Стань опасным на сетке.",
+  "prog3DescEn": "Approach, swing, line and angle. Become a threat at the net.",
+  "prog4TitleRu": "Пляжный волейбол",
+  "prog4TitleEn": "Beach volleyball",
+  "prog4DescRu": "Тактика 2×2, песок, ветер, сигналы. Отдельный полный курс.",
+  "prog4DescEn": "2v2 tactics, sand, wind, hand signals. A complete separate course.",
+
+  "finalKickerRu": "Мы строим прямо сейчас",
+  "finalKickerEn": "We're building right now",
+  "finalH2Ru": "Тебе было бы интересно такое приложение?",
+  "finalH2En": "Would you use an app like this?",
+  "finalPRu": "Мы строим Rovo прямо сейчас. Ответь на один вопрос — это поможет нам сделать его лучше.",
+  "finalPEn": "We're building Rovo right now. Answer one question — it helps us make it better.",
+  "ctaTextRu": "Ответить на вопрос",
+  "ctaTextEn": "Answer one question",
+  "finalMiniRu": "одна минута — без регистрации",
+  "finalMiniEn": "one minute — no signup"
+}/*EDITMODE-END*/;
+
+// Accent themes — each color maps to a full palette
+const ACCENTS = {
+  '#1D9E75': { green:'#1D9E75', dark:'#0F6E56', darker:'#085041', soft:'#E1F5EE', mid:'#5DCAA5', pale:'#9FE1CB' },
+  '#2A6FDB': { green:'#2A6FDB', dark:'#1A4FA0', darker:'#0F3372', soft:'#E3EDFC', mid:'#6F9DE5', pale:'#B1C8EE' },
+  '#E37239': { green:'#E37239', dark:'#A8451B', darker:'#6F2A0B', soft:'#FBE5D6', mid:'#EE9D6F', pale:'#F5C6A6' },
+  '#7A5AE0': { green:'#7A5AE0', dark:'#5535B5', darker:'#37207A', soft:'#ECE5FB', mid:'#A48BEE', pale:'#C9B8F4' },
+  '#15151A': { green:'#15151A', dark:'#000000', darker:'#000000', soft:'#EEEEEC', mid:'#5F5E5A', pale:'#B4B2A9' }
+};
+const BG_TONES = {
+  warm:    { bg:'#FBFBF9', sand:'#F5F1E8' },
+  neutral: { bg:'#F8F8F8', sand:'#EFEFEF' },
+  cool:    { bg:'#F7FAFB', sand:'#E8EEF1' }
+};
+
+function hexToRgb(h){
+  const m = h.replace('#','').match(/.{2}/g);
+  return m ? m.map(x=>parseInt(x,16)).join(',') : '0,0,0';
+}
+
+function applyTweaks(t){
+  const r = document.documentElement;
+  const a = ACCENTS[t.accent] || ACCENTS['#1D9E75'];
+  r.style.setProperty('--green', a.green);
+  r.style.setProperty('--green-dark', a.dark);
+  r.style.setProperty('--green-darker', a.darker);
+  r.style.setProperty('--green-soft', a.soft);
+  r.style.setProperty('--green-mid', a.mid);
+  r.style.setProperty('--green-pale', a.pale);
+  const rgb = hexToRgb(a.green);
+  r.style.setProperty('--green-glow', `rgba(${rgb},.18)`);
+  r.style.setProperty('--green-glow-mid', `rgba(${rgb},.14)`);
+  r.style.setProperty('--green-shadow', `rgba(${rgb},.5)`);
+  r.style.setProperty('--green-shadow-soft', `rgba(${rgb},.55)`);
+
+  const tone = BG_TONES[t.bgTone] || BG_TONES.warm;
+  r.style.setProperty('--bg-tone', tone.bg);
+  r.style.setProperty('--sand', tone.sand);
+
+  r.style.setProperty('--heading-font', `'${t.headingFont}'`);
+  r.style.setProperty('--body-font', `'${t.bodyFont}'`);
+  r.style.setProperty('--section-pad', t.sectionPad + 'px');
+
+  document.body.classList.toggle('hide-floaters', !t.showFloaters);
+  document.body.classList.toggle('hide-popular', !t.showPopular);
+  document.body.classList.toggle('hide-strike', !t.showStrike);
+  document.body.classList.toggle('hide-diff', !t.showDiff);
+
+  // Sync text edits to DOM (uses innerHTML so accent/strike spans render in H1)
+  const lang = document.documentElement.lang || 'ru';
+  document.querySelectorAll('[data-tweak-key]').forEach(el=>{
+    const key = el.getAttribute('data-tweak-key');
+    const ruKey = key.replace(/(Ru|En)$/, 'Ru');
+    const enKey = key.replace(/(Ru|En)$/, 'En');
+    if(t[ruKey] != null) el.setAttribute('data-ru', t[ruKey]);
+    if(t[enKey] != null) el.setAttribute('data-en', t[enKey]);
+    const cur = el.getAttribute('data-' + lang);
+    if(cur != null) el.innerHTML = cur;
+  });
+}
+
+// Custom multiline text input
+function TweakArea({ label, value, onChange, rows=2 }){
+  return (
+    <div className="twk-row">
+      <div className="twk-lbl"><span>{label}</span></div>
+      <textarea
+        className="twk-field"
+        rows={rows}
+        value={value || ''}
+        onChange={e=>onChange(e.target.value)}
+        style={{resize:'vertical',minHeight:'44px',fontFamily:'inherit',lineHeight:1.35,padding:'6px 8px'}}
+      />
+    </div>
+  );
+}
+
+// Section-aware text editor pair (RU + EN)
+function TextPair({ baseKey, label, t, setTweak, multi=false }){
+  const ruKey = baseKey + 'Ru';
+  const enKey = baseKey + 'En';
+  const Ctrl = multi ? TweakArea : TweakText;
+  return (
+    <>
+      <Ctrl label={label + ' · RU'} value={t[ruKey]} onChange={v=>setTweak(ruKey, v)} />
+      <Ctrl label={label + ' · EN'} value={t[enKey]} onChange={v=>setTweak(enKey, v)} />
+    </>
+  );
+}
+
+const GROUPS = ['Theme', 'Hero', 'Problem', 'How it works', 'Differentiation', 'Programs', 'Final CTA'];
+
+function TweaksApp(){
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  const [group, setGroup] = React.useState('Theme');
+  React.useEffect(()=>{ applyTweaks(t); }, [t]);
+
+  return (
+    <TweaksPanel title="Tweaks">
+      <TweakSelect label="Section" value={group} options={GROUPS} onChange={setGroup} />
+
+      {group === 'Theme' && <>
+        <TweakSection label="Theme" />
+        <TweakColor label="Акцент" value={t.accent} options={Object.keys(ACCENTS)}
+          onChange={v=>setTweak('accent', v)} />
+        <TweakRadio label="Фон" value={t.bgTone} options={['warm','neutral','cool']}
+          onChange={v=>setTweak('bgTone', v)} />
+        <TweakSection label="Typography" />
+        <TweakSelect label="Заголовки" value={t.headingFont}
+          options={['Manrope','Onest','Plus Jakarta Sans']}
+          onChange={v=>setTweak('headingFont', v)} />
+        <TweakSelect label="Текст" value={t.bodyFont}
+          options={['Manrope','Onest','Plus Jakarta Sans']}
+          onChange={v=>setTweak('bodyFont', v)} />
+        <TweakSection label="Layout" />
+        <TweakSlider label="Отступы секций" value={t.sectionPad} min={48} max={140} step={2} unit="px"
+          onChange={v=>setTweak('sectionPad', v)} />
+        <TweakSection label="Detail toggles" />
+        <TweakToggle label="Плавающие карточки" value={t.showFloaters}
+          onChange={v=>setTweak('showFloaters', v)} />
+        <TweakToggle label="«популярное» тег" value={t.showPopular}
+          onChange={v=>setTweak('showPopular', v)} />
+        <TweakToggle label="Зачёркивание «выигрывать»" value={t.showStrike}
+          onChange={v=>setTweak('showStrike', v)} />
+        <TweakToggle label="Тёмная секция отстройки" value={t.showDiff}
+          onChange={v=>setTweak('showDiff', v)} />
+      </>}
+
+      {group === 'Hero' && <>
+        <TweakSection label="Hero · kicker" />
+        <TextPair baseKey="heroKicker" label="Плашка сверху" t={t} setTweak={setTweak} />
+        <TweakSection label="Hero · H1 (HTML allowed)" />
+        <TextPair baseKey="heroH1L1" label="Строка 1" t={t} setTweak={setTweak} multi />
+        <TextPair baseKey="heroH1L2" label="Строка 2" t={t} setTweak={setTweak} multi />
+        <TextPair baseKey="heroH1L3" label="Строка 3" t={t} setTweak={setTweak} multi />
+        <TweakSection label="Hero · subtitle & CTAs" />
+        <TextPair baseKey="heroSub" label="Подзаголовок" t={t} setTweak={setTweak} multi />
+        <TextPair baseKey="heroCta" label="Кнопка (primary)" t={t} setTweak={setTweak} />
+        <TextPair baseKey="heroSecCta" label="Кнопка (secondary)" t={t} setTweak={setTweak} />
+      </>}
+
+      {group === 'Problem' && <>
+        <TweakSection label="Section header" />
+        <TextPair baseKey="problemKicker" label="Плашка" t={t} setTweak={setTweak} />
+        <TextPair baseKey="problemH2" label="Заголовок" t={t} setTweak={setTweak} multi />
+        <TextPair baseKey="problemLead" label="Подзаголовок" t={t} setTweak={setTweak} multi />
+        <TweakSection label="Сценарий A · Новичок" />
+        <TextPair baseKey="scenATag" label="Тег" t={t} setTweak={setTweak} />
+        <TextPair baseKey="scenAQuote" label="Цитата" t={t} setTweak={setTweak} multi />
+        <TweakSection label="Сценарий B · Любитель" />
+        <TextPair baseKey="scenBTag" label="Тег" t={t} setTweak={setTweak} />
+        <TextPair baseKey="scenBQuote" label="Цитата" t={t} setTweak={setTweak} multi />
+      </>}
+
+      {group === 'How it works' && <>
+        <TweakSection label="Section header" />
+        <TextPair baseKey="howKicker" label="Плашка" t={t} setTweak={setTweak} />
+        <TextPair baseKey="howH2" label="Заголовок" t={t} setTweak={setTweak} multi />
+        <TweakSection label="Шаг 1" />
+        <TextPair baseKey="step1Title" label="Заголовок" t={t} setTweak={setTweak} />
+        <TextPair baseKey="step1Desc" label="Текст" t={t} setTweak={setTweak} multi />
+        <TweakSection label="Шаг 2" />
+        <TextPair baseKey="step2Title" label="Заголовок" t={t} setTweak={setTweak} />
+        <TextPair baseKey="step2Desc" label="Текст" t={t} setTweak={setTweak} multi />
+        <TweakSection label="Шаг 3" />
+        <TextPair baseKey="step3Title" label="Заголовок" t={t} setTweak={setTweak} />
+        <TextPair baseKey="step3Desc" label="Текст" t={t} setTweak={setTweak} multi />
+      </>}
+
+      {group === 'Differentiation' && <>
+        <TweakSection label="Differentiation" />
+        <TextPair baseKey="diffKicker" label="Плашка" t={t} setTweak={setTweak} />
+        <TextPair baseKey="diffH2a" label="Заголовок (часть 1)" t={t} setTweak={setTweak} multi />
+        <TextPair baseKey="diffH2b" label="Заголовок (акцент)" t={t} setTweak={setTweak} />
+        <TextPair baseKey="diffP" label="Параграф" t={t} setTweak={setTweak} multi />
+      </>}
+
+      {group === 'Programs' && <>
+        <TweakSection label="Section header" />
+        <TextPair baseKey="progKicker" label="Плашка" t={t} setTweak={setTweak} />
+        <TextPair baseKey="progH2" label="Заголовок" t={t} setTweak={setTweak} />
+        <TextPair baseKey="progLead" label="Подзаголовок" t={t} setTweak={setTweak} multi />
+        <TweakSection label="Программа 1" />
+        <TextPair baseKey="prog1Title" label="Название" t={t} setTweak={setTweak} />
+        <TextPair baseKey="prog1Desc" label="Описание" t={t} setTweak={setTweak} multi />
+        <TweakSection label="Программа 2" />
+        <TextPair baseKey="prog2Title" label="Название" t={t} setTweak={setTweak} />
+        <TextPair baseKey="prog2Desc" label="Описание" t={t} setTweak={setTweak} multi />
+        <TweakSection label="Программа 3" />
+        <TextPair baseKey="prog3Title" label="Название" t={t} setTweak={setTweak} />
+        <TextPair baseKey="prog3Desc" label="Описание" t={t} setTweak={setTweak} multi />
+        <TweakSection label="Программа 4" />
+        <TextPair baseKey="prog4Title" label="Название" t={t} setTweak={setTweak} />
+        <TextPair baseKey="prog4Desc" label="Описание" t={t} setTweak={setTweak} multi />
+      </>}
+
+      {group === 'Final CTA' && <>
+        <TweakSection label="Final CTA" />
+        <TextPair baseKey="finalKicker" label="Плашка" t={t} setTweak={setTweak} />
+        <TextPair baseKey="finalH2" label="Заголовок" t={t} setTweak={setTweak} multi />
+        <TextPair baseKey="finalP" label="Параграф" t={t} setTweak={setTweak} multi />
+        <TextPair baseKey="ctaText" label="Кнопка" t={t} setTweak={setTweak} />
+        <TextPair baseKey="finalMini" label="Подпись" t={t} setTweak={setTweak} />
+      </>}
+    </TweaksPanel>
+  );
+}
+
+// Apply defaults immediately so first paint matches saved tweaks
+applyTweaks(TWEAK_DEFAULTS);
+
+const mount = document.createElement('div');
+mount.id = 'tweaks-root';
+document.body.appendChild(mount);
+ReactDOM.createRoot(mount).render(<TweaksApp />);
+</script>
+
+</body>
+</html>

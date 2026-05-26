@@ -1,0 +1,151 @@
+
+<style>
+*{box-sizing:border-box;}
+.sec{border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-lg);padding:20px 24px;margin-bottom:12px;background:var(--color-background-primary);}
+.sec-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;color:var(--color-text-tertiary);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.sec-label::after{content:'';flex:1;height:.5px;background:var(--color-border-tertiary);}
+.lang-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.lang-tag{font-size:10px;font-weight:500;padding:2px 8px;border-radius:10px;margin-bottom:8px;display:inline-block;}
+.ru-tag{background:#E1F5EE;color:#0F6E56;}
+.en-tag{background:#E6F1FB;color:#185FA5;}
+.copy-h{font-size:16px;font-weight:500;color:var(--color-text-primary);line-height:1.35;margin-bottom:6px;}
+.copy-s{font-size:13px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:4px;}
+.copy-cta{display:inline-block;margin-top:8px;font-size:12px;padding:6px 16px;border-radius:20px;border:.5px solid #5DCAA5;color:#0F6E56;background:#E1F5EE;}
+.note{font-size:11px;color:var(--color-text-tertiary);background:var(--color-background-secondary);border-radius:8px;padding:8px 12px;margin-top:10px;display:flex;gap:6px;align-items:flex-start;}
+.scenario{border:.5px solid var(--color-border-tertiary);border-radius:8px;padding:10px 14px;margin-bottom:8px;}
+.scenario:last-child{margin-bottom:0;}
+.sc-label{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.04em;color:var(--color-text-tertiary);margin-bottom:4px;}
+.sc-text{font-size:13px;color:var(--color-text-primary);line-height:1.5;}
+.step{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;}
+.step:last-child{margin-bottom:0;}
+.step-num{width:24px;height:24px;border-radius:50%;border:.5px solid var(--color-border-secondary);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:var(--color-text-secondary);flex-shrink:0;}
+.step-h{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px;}
+.step-s{font-size:12px;color:var(--color-text-secondary);line-height:1.5;}
+.prog-card{border:.5px solid var(--color-border-tertiary);border-radius:8px;padding:10px 14px;margin-bottom:8px;}
+.prog-card:last-child{margin-bottom:0;}
+.prog-h{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:3px;}
+.prog-s{font-size:11px;color:var(--color-text-secondary);}
+.tag-pop{background:#FAEEDA;color:#854F0B;font-size:10px;padding:2px 7px;border-radius:10px;margin-left:6px;}
+</style>
+
+<h2 class="sr-only">Тексты лендинга v2 — без пляжного сценария и без отзывов</h2>
+
+<div class="sec" style="border-color:#5DCAA5;background:#E1F5EE;">
+  <div class="sec-label" style="color:#1D9E75;">1 · Hero</div>
+  <div class="lang-row">
+    <div class="lang-col">
+      <div class="lang-tag ru-tag">RU</div>
+      <div class="copy-h">Научись атаковать.<br>Научись принимать.<br>Начни выигрывать.</div>
+      <div class="copy-s">Всего 10 минут в день. Дерево навыков, короткие уроки, реальный прогресс.</div>
+      <div class="copy-cta">Хочу попробовать</div>
+    </div>
+    <div class="lang-col">
+      <div class="lang-tag en-tag">EN</div>
+      <div class="copy-h">Learn to attack.<br>Learn to receive.<br>Start winning.</div>
+      <div class="copy-s">Just 10 minutes a day. Skill tree, short lessons, real progress.</div>
+      <div class="copy-cta">I want to try</div>
+    </div>
+  </div>
+  <div class="note"><i class="ti ti-info-circle" aria-hidden="true" style="font-size:13px;flex-shrink:0;margin-top:1px;"></i>Рядом — мокап телефона с деревом навыков</div>
+</div>
+
+<div class="sec">
+  <div class="sec-label">2 · Проблема — «это про меня»</div>
+  <div class="lang-row">
+    <div class="lang-col">
+      <div class="lang-tag ru-tag">RU</div>
+      <div class="scenario">
+        <div class="sc-label">Новичок</div>
+        <div class="sc-text">Выходишь на площадку и не знаешь куда встать. Мяч летит — и ты не успеваешь.</div>
+      </div>
+      <div class="scenario">
+        <div class="sc-label">Любитель в клубе</div>
+        <div class="sc-text">Играешь уже год, но атака всё равно не идёт. Смотришь видео на YouTube — а лучше не становишься.</div>
+      </div>
+    </div>
+    <div class="lang-col">
+      <div class="lang-tag en-tag">EN</div>
+      <div class="scenario">
+        <div class="sc-label">Beginner</div>
+        <div class="sc-text">You step on the court and don't know where to stand. The ball flies — and you're always a second late.</div>
+      </div>
+      <div class="scenario">
+        <div class="sc-label">Club player</div>
+        <div class="sc-text">You've been playing for a year but your attack still isn't clicking. You watch YouTube — nothing changes.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-label">3 · Как это работает</div>
+  <div class="lang-row">
+    <div class="lang-col">
+      <div class="lang-tag ru-tag">RU</div>
+      <div class="step"><div class="step-num">1</div><div><div class="step-h">Выбери свой путь</div><div class="step-s">Новичок, атакующий, либеро или пляжный игрок — дерево навыков строится под тебя.</div></div></div>
+      <div class="step"><div class="step-num">2</div><div><div class="step-h">Проходи короткие уроки</div><div class="step-s">Видео, объяснение, задание. 10 минут — и ты уже на шаг ближе к площадке.</div></div></div>
+      <div class="step"><div class="step-num">3</div><div><div class="step-h">Следи за прогрессом</div><div class="step-s">XP, уровни, ежедневные серии. Прогресс виден — это мотивирует продолжать.</div></div></div>
+    </div>
+    <div class="lang-col">
+      <div class="lang-tag en-tag">EN</div>
+      <div class="step"><div class="step-num">1</div><div><div class="step-h">Choose your path</div><div class="step-s">Beginner, attacker, libero or beach player — the skill tree adapts to you.</div></div></div>
+      <div class="step"><div class="step-num">2</div><div><div class="step-h">Take short lessons</div><div class="step-s">Video, explanation, task. 10 minutes — and you're one step closer to the court.</div></div></div>
+      <div class="step"><div class="step-num">3</div><div><div class="step-h">Track your progress</div><div class="step-s">XP, levels, daily streaks. Progress you can see — that's what keeps you going.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="sec" style="border-color:#EF9F27;">
+  <div class="sec-label" style="color:#854F0B;">4 · Отстройка от конкурентов</div>
+  <div class="lang-row">
+    <div class="lang-col">
+      <div class="lang-tag ru-tag">RU</div>
+      <div class="copy-h" style="font-size:15px;">Короткие уроки. Дерево навыков. Реальный прогресс.<br>Никаких скучных видео-каталогов.</div>
+      <div class="copy-s" style="margin-top:8px;">Другие приложения дают тебе 50 видео и говорят «смотри». Мы даём тебе путь — и ведём по нему шаг за шагом.</div>
+    </div>
+    <div class="lang-col">
+      <div class="lang-tag en-tag">EN</div>
+      <div class="copy-h" style="font-size:15px;">Short lessons. Skill tree. Real progress.<br>No boring video libraries.</div>
+      <div class="copy-s" style="margin-top:8px;">Other apps give you 50 videos and say "watch." We give you a path — and walk you through it step by step.</div>
+    </div>
+  </div>
+  <div class="note"><i class="ti ti-info-circle" aria-hidden="true" style="font-size:13px;flex-shrink:0;margin-top:1px;"></i>Здесь — большой мокап дерева навыков</div>
+</div>
+
+<div class="sec">
+  <div class="sec-label">5 · Программы</div>
+  <div class="lang-row">
+    <div class="lang-col">
+      <div class="lang-tag ru-tag">RU</div>
+      <div class="prog-card"><div class="prog-h">Новичок · 30 дней<span class="tag-pop">популярное</span></div><div class="prog-s">С нуля до уверенной игры. Стойка, передачи, первая подача.</div></div>
+      <div class="prog-card"><div class="prog-h">Уверенный приём · 14 дней</div><div class="prog-s">Приём подачи, позиция, чтение атаки соперника.</div></div>
+      <div class="prog-card"><div class="prog-h">Нападающий · 30 дней</div><div class="prog-s">Разбег, удар, линия и диагональ. Стань опасным на сетке.</div></div>
+      <div class="prog-card"><div class="prog-h">Пляжный волейбол</div><div class="prog-s">Тактика 2×2, песок, ветер, сигналы. Отдельный полный курс.</div></div>
+    </div>
+    <div class="lang-col">
+      <div class="lang-tag en-tag">EN</div>
+      <div class="prog-card"><div class="prog-h">Beginner · 30 days<span class="tag-pop">popular</span></div><div class="prog-s">From zero to confident play. Stance, passing, first serve.</div></div>
+      <div class="prog-card"><div class="prog-h">Solid reception · 14 days</div><div class="prog-s">Serve receive, positioning, reading the opponent's attack.</div></div>
+      <div class="prog-card"><div class="prog-h">Attacker · 30 days</div><div class="prog-s">Approach, swing, line and angle. Become a threat at the net.</div></div>
+      <div class="prog-card"><div class="prog-h">Beach volleyball</div><div class="prog-s">2v2 tactics, sand, wind, hand signals. A complete separate course.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="sec" style="border-color:#5DCAA5;background:#E1F5EE;">
+  <div class="sec-label" style="color:#1D9E75;">6 · CTA финальный</div>
+  <div class="lang-row">
+    <div class="lang-col">
+      <div class="lang-tag ru-tag">RU</div>
+      <div class="copy-h" style="color:#085041;">Тебе было бы интересно такое приложение?</div>
+      <div class="copy-s" style="color:#0F6E56;">Мы строим его прямо сейчас. Один вопрос — одна минута.</div>
+      <div class="copy-cta">Ответить на вопрос</div>
+    </div>
+    <div class="lang-col">
+      <div class="lang-tag en-tag">EN</div>
+      <div class="copy-h" style="color:#085041;">Would you use an app like this?</div>
+      <div class="copy-s" style="color:#0F6E56;">We're building it right now. One question — one minute.</div>
+      <div class="copy-cta">Answer one question</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,194 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+.wrap{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:24px 16px;display:flex;justify-content:center;}
+.phone{width:320px;background:#fff;border-radius:36px;border:1px solid #D3D1C7;overflow:hidden;}
+.phone-bar{height:10px;background:#1D9E75;}
+.screen{background:#F8F9FA;min-height:580px;}
+.topbar{background:#fff;padding:16px 20px 12px;border-bottom:0.5px solid #EAEAEA;}
+.topbar-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.greeting{font-size:13px;color:#888780;font-family:var(--font-sans);}
+.username{font-size:17px;font-weight:500;color:#2C2C2A;font-family:var(--font-sans);}
+.xp-bar-wrap{margin-top:8px;}
+.xp-label{display:flex;justify-content:space-between;font-size:11px;color:#888780;font-family:var(--font-sans);margin-bottom:4px;}
+.xp-track{height:6px;background:#E1F5EE;border-radius:3px;}
+.xp-fill{height:6px;background:#1D9E75;border-radius:3px;width:62%;}
+.streak-pill{display:flex;align-items:center;gap:4px;background:#FAEEDA;border-radius:20px;padding:4px 10px;}
+.streak-num{font-size:13px;font-weight:500;color:#633806;font-family:var(--font-sans);}
+.streak-label{font-size:11px;color:#854F0B;font-family:var(--font-sans);}
+.section-label{font-size:11px;font-weight:500;color:#888780;text-transform:uppercase;letter-spacing:.05em;padding:14px 20px 8px;font-family:var(--font-sans);}
+.tree{padding:0 16px 16px;}
+.node-row{display:flex;justify-content:center;gap:10px;margin-bottom:8px;}
+.node-row.left{justify-content:flex-start;padding-left:16px;}
+.node-row.right{justify-content:flex-end;padding-right:16px;}
+.node{border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:10px;min-width:126px;cursor:pointer;border:.5px solid transparent;}
+.node.done{background:#1D9E75;border-color:#0F6E56;}
+.node.done .node-title{color:#fff;font-family:var(--font-sans);}
+.node.done .node-sub{color:#9FE1CB;font-family:var(--font-sans);}
+.node.done .node-icon{color:#fff;}
+.node.active{background:#E1F5EE;border-color:#5DCAA5;}
+.node.active .node-title{color:#085041;font-family:var(--font-sans);}
+.node.active .node-sub{color:#1D9E75;font-family:var(--font-sans);}
+.node.active .node-icon{color:#1D9E75;}
+.node.locked{background:#fff;border-color:#EAEAEA;}
+.node.locked .node-title{color:#B4B2A9;font-family:var(--font-sans);}
+.node.locked .node-sub{color:#D3D1C7;font-family:var(--font-sans);}
+.node.locked .node-icon{color:#D3D1C7;}
+.node-icon{font-size:20px;flex-shrink:0;}
+.node-title{font-size:13px;font-weight:500;line-height:1.2;font-family:var(--font-sans);}
+.node-sub{font-size:10px;margin-top:2px;line-height:1.3;font-family:var(--font-sans);}
+.connector{display:flex;justify-content:center;margin:0 0 8px;}
+.connector-line{width:1.5px;height:18px;background:#D3D1C7;border-radius:1px;}
+.connector-fork{display:flex;gap:80px;justify-content:center;margin:0 0 0;}
+.fork-line{width:1.5px;height:18px;background:#D3D1C7;border-radius:1px;}
+.bottom-nav{background:#fff;border-top:0.5px solid #EAEAEA;display:flex;justify-content:space-around;padding:10px 0 16px;}
+.nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;}
+.nav-icon{font-size:20px;color:#B4B2A9;}
+.nav-icon.active{color:#1D9E75;}
+.nav-label{font-size:9px;color:#B4B2A9;font-family:var(--font-sans);}
+.nav-label.active{color:#1D9E75;font-weight:500;}
+.check{width:18px;height:18px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.lock{width:18px;height:18px;border-radius:50%;background:#F1EFE8;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+</style>
+
+<h2 class="sr-only">Мокап главного экрана приложения — дерево навыков</h2>
+
+<div class="wrap">
+  <div class="phone">
+    <div class="phone-bar"></div>
+    <div class="screen">
+
+      <div class="topbar">
+        <div class="topbar-row">
+          <div>
+            <div class="greeting">Привет,</div>
+            <div class="username">Алексей</div>
+          </div>
+          <div class="streak-pill">
+            <i class="ti ti-flame" aria-hidden="true" style="font-size:14px;color:#854F0B;"></i>
+            <span class="streak-num">7</span>
+            <span class="streak-label">дней подряд</span>
+          </div>
+        </div>
+        <div class="xp-bar-wrap">
+          <div class="xp-label">
+            <span>Уровень 4</span>
+            <span>620 / 1000 XP</span>
+          </div>
+          <div class="xp-track"><div class="xp-fill"></div></div>
+        </div>
+      </div>
+
+      <div class="section-label">Мой путь</div>
+
+      <div class="tree">
+
+        <div class="node-row">
+          <div class="node done">
+            <div class="check"><i class="ti ti-check" aria-hidden="true" style="font-size:11px;color:#1D9E75;"></i></div>
+            <div>
+              <div class="node-title">Основы игры</div>
+              <div class="node-sub">Жесты судьи · 4 урока</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="connector"><div class="connector-line"></div></div>
+
+        <div class="node-row">
+          <div class="node done">
+            <div class="check"><i class="ti ti-check" aria-hidden="true" style="font-size:11px;color:#1D9E75;"></i></div>
+            <div>
+              <div class="node-title">Стойка и перемещение</div>
+              <div class="node-sub">5 уроков · пройдено</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="connector"><div class="connector-line"></div></div>
+
+        <div class="node-row" style="gap:8px;">
+          <div class="node done" style="min-width:118px;">
+            <div class="check"><i class="ti ti-check" aria-hidden="true" style="font-size:11px;color:#1D9E75;"></i></div>
+            <div>
+              <div class="node-title">Верхняя передача</div>
+              <div class="node-sub">6 уроков</div>
+            </div>
+          </div>
+          <div class="node done" style="min-width:118px;">
+            <div class="check"><i class="ti ti-check" aria-hidden="true" style="font-size:11px;color:#1D9E75;"></i></div>
+            <div>
+              <div class="node-title">Нижняя передача</div>
+              <div class="node-sub">6 уроков</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="connector"><div class="connector-line"></div></div>
+
+        <div class="node-row">
+          <div class="node active" style="border-width:1.5px;">
+            <i class="ti ti-player-play node-icon" aria-hidden="true"></i>
+            <div>
+              <div class="node-title">Атака с разбега</div>
+              <div class="node-sub">Урок 3 из 8 · сейчас</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="connector"><div class="connector-line"></div></div>
+
+        <div class="node-row" style="gap:8px;">
+          <div class="node locked" style="min-width:118px;">
+            <div class="lock"><i class="ti ti-lock" aria-hidden="true" style="font-size:11px;color:#B4B2A9;"></i></div>
+            <div>
+              <div class="node-title">Верхняя подача</div>
+              <div class="node-sub">6 уроков</div>
+            </div>
+          </div>
+          <div class="node locked" style="min-width:118px;">
+            <div class="lock"><i class="ti ti-lock" aria-hidden="true" style="font-size:11px;color:#B4B2A9;"></i></div>
+            <div>
+              <div class="node-title">Блок</div>
+              <div class="node-sub">6 уроков</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="connector"><div class="connector-line"></div></div>
+
+        <div class="node-row">
+          <div class="node locked">
+            <div class="lock"><i class="ti ti-lock" aria-hidden="true" style="font-size:11px;color:#B4B2A9;"></i></div>
+            <div>
+              <div class="node-title">Нападающий · 30 дней</div>
+              <div class="node-sub">Специализация</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="bottom-nav">
+      <div class="nav-item">
+        <i class="ti ti-home nav-icon active" aria-hidden="true"></i>
+        <span class="nav-label active">Путь</span>
+      </div>
+      <div class="nav-item">
+        <i class="ti ti-chart-bar nav-icon" aria-hidden="true"></i>
+        <span class="nav-label">Прогресс</span>
+      </div>
+      <div class="nav-item">
+        <i class="ti ti-trophy nav-icon" aria-hidden="true"></i>
+        <span class="nav-label">Достижения</span>
+      </div>
+      <div class="nav-item">
+        <i class="ti ti-user nav-icon" aria-hidden="true"></i>
+        <span class="nav-label">Профиль</span>
+      </div>
+    </div>
+
+  </div>
+</div>
