@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+/* ============ DESIGN TOKENS ============ */
+:root {
+  /* Green palette */
+  --green: #1d9e75;
+  --green-dark: #0f6e56;
+  --green-darker: #085041;
+  --green-soft: #e1f5ee;
+  --green-mid: #5dcaa5;
+  --green-pale: #9fe1cb;
+  --green-glow: rgba(29, 158, 117, 0.18);
+  --green-glow-mid: rgba(29, 158, 117, 0.14);
+  --green-shadow: rgba(29, 158, 117, 0.5);
+  --green-shadow-soft: rgba(29, 158, 117, 0.55);
+
+  /* Backgrounds & surfaces */
+  --bg: #fbfbf9;
+  --surface: #ffffff;
+
+  /* Ink (text) */
+  --ink: #15151a;
+  --ink-2: #2c2c2a;
+  --ink-3: #5f5e5a;
+  --ink-4: #888780;
+  --ink-5: #b4b2a9;
+
+  /* Borders */
+  --border: #eceae3;
+  --border-2: #d3d1c7;
+
+  /* Warm accent */
+  --warm-soft: #faeeda;
+  --warm-mid: #efb668;
+  --warm-ink: #854f0b;
+  --warm-ink-2: #633806;
+
+  /* Sand */
+  --sand: #f5f1e8;
+
+  /* Shape */
+  --radius: 18px;
+  --radius-lg: 28px;
+
+  /* Spacing */
+  --section-pad: 90px;
+
+  /* Font */
+  --font-body: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ============ RESET & BASE ============ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink-2);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--ink);
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+/* ============ TYPOGRAPHY ============ */
+.h1 {
+  font-size: clamp(40px, 5.6vw, 68px);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+.h2 {
+  font-size: clamp(30px, 3.4vw, 46px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.028em;
+}
+
+.h3 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.018em;
+}
+
+.lead {
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--ink-3);
+  text-wrap: pretty;
+}
+
+@media (max-width: 640px) {
+  .lead {
+    font-size: 16px;
+  }
+
+  :root {
+    --section-pad: calc(90px * 0.72);
+  }
+}
+
+/* ============ LAYOUT ============ */
+.shell {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+@media (max-width: 640px) {
+  .shell {
+    padding: 0 20px;
+  }
+}
+
+/* ============ TAILWIND THEME ============ */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-ink-4: var(--ink-4);
+  --color-ink-5: var(--ink-5);
+  --color-green: var(--green);
+  --color-green-dark: var(--green-dark);
+  --color-green-soft: var(--green-soft);
+  --color-green-mid: var(--green-mid);
+  --color-border: var(--border);
+  --color-border-2: var(--border-2);
+  --color-sand: var(--sand);
+  --color-warm-soft: var(--warm-soft);
+  --color-warm-mid: var(--warm-mid);
+  --color-warm-ink: var(--warm-ink);
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+}
