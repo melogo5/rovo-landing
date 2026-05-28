@@ -119,6 +119,7 @@ export const en: Messages = {
     mini: "one minute — no signup",
   },
   survey: {
+    kicker: "One question",
     question: "Would you use an app like this?",
     answers: ["Yes, definitely", "Depends on price", "Not sure"],
     emailPlaceholder: "your email (optional)",
