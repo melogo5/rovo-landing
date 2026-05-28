@@ -5,6 +5,7 @@ import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Differentiation } from "@/components/sections/Differentiation";
 import { Programs } from "@/components/sections/Programs";
 import { FinalCta } from "@/components/sections/FinalCta";
+import { SurveyForm } from "@/components/sections/SurveyForm";
 import { Footer } from "@/components/sections/Footer";
 
 export default function Page() {
@@ -18,6 +19,7 @@ export default function Page() {
         <Differentiation />
         <Programs />
         <FinalCta />
+        <SurveyForm />
       </main>
       <Footer />
     </>
