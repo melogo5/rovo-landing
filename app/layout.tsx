@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
+import { LangProvider } from "@/context/LangContext";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -21,7 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" className={`${manrope.variable} h-full`}>
-      <body className="min-h-full flex flex-col antialiased">{children}</body>
+      <body className="min-h-full flex flex-col antialiased">
+        <LangProvider>{children}</LangProvider>
+      </body>
     </html>
   );
 }
