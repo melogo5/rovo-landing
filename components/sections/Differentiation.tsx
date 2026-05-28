@@ -39,6 +39,8 @@ export function Differentiation() {
           }}
         />
 
+        {/* Inner content — constrained to 1240px, centred */}
+        <div style={{ maxWidth: 1240, margin: "0 auto" }}>
         <div
           className="diff-grid"
           style={{
@@ -111,6 +113,7 @@ export function Differentiation() {
             <PhoneLesson lang={lang} />
           </div>
         </div>
+        </div> {/* /inner max-width */}
       </div>
 
       <style>{`
