@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "Bash(vercel --version)",
+      "Bash(vercel login)",
+      "Bash(vercel --yes)",
+      "Bash(vercel env add TELEGRAM_BOT_TOKEN production --value \"REPLACE_ME\" --yes)",
+      "Bash(vercel env add TELEGRAM_CHAT_ID production --value \"REPLACE_ME\" --yes)"
+    ]
+  }
+}
